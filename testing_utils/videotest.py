@@ -11,6 +11,8 @@ import numpy as np
 from random import shuffle
 from scipy.misc import imread, imresize
 from timeit import default_timer as timer
+import datetime
+import subprocess
 
 import sys
 sys.path.append("..")
@@ -103,7 +105,7 @@ class VideoTest(object):
         video_name = now.strftime("%Y%m%d%H%M%S")
         output_shape = (int(self.input_shape[0]*vidar),self.input_shape[1])
         fourcc = cv2.VideoWriter_fourcc(*'XVID')
-        out = cv2.VideoWriter('./output_video/.%s.avi' % video_name, fourcc, 20.0, output_shape)
+        out = cv2.VideoWriter('output_video/.%s.avi' % video_name, fourcc, 20.0, output_shape)
         
             
         while True:
@@ -170,6 +172,8 @@ class VideoTest(object):
                             text_pos = (xmin + 5, ymin)
                             cv2.rectangle(to_draw, text_top, text_bot, self.class_colors[class_num], -1)
                             cv2.putText(to_draw, text, text_pos, cv2.FONT_HERSHEY_SIMPLEX, 0.35, (0,0,0), 1)
+                            
+                            print(text)
                     
             
                     # Calculate FPS
