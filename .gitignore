@@ -98,4 +98,4 @@ ENV/
 .ropeproject
 
 # nohup command output
-.out
+*.out
