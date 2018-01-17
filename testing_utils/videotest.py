@@ -84,100 +84,123 @@ class VideoTest(object):
             "trying to open a webcam, make sure you video_path is an integer!"))
         
         # Compute aspect ratio of video     
-        vidw = vid.get(cv2.cv.CV_CAP_PROP_FRAME_WIDTH)
-        vidh = vid.get(cv2.cv.CV_CAP_PROP_FRAME_HEIGHT)
+        vidw = vid.get(3)
+        vidh = vid.get(4)
         vidar = vidw/vidh
         
         # Skip frames until reaching start_frame
         if start_frame > 0:
-            vid.set(cv2.cv.CV_CAP_PROP_POS_MSEC, start_frame)
+            vid.set(0, start_frame)
             
         accum_time = 0
         curr_fps = 0
         fps = "FPS: ??"
         prev_time = timer()
+        
+        
+        ## video output ##
+        now = datetime.datetime.now()
+        video_name = now.strftime("%Y%m%d%H%M%S")
+        output_shape = (int(self.input_shape[0]*vidar),self.input_shape[1])
+        fourcc = cv2.VideoWriter_fourcc(*'XVID')
+        out = cv2.VideoWriter('./output_video/.%s.avi' % video_name, fourcc, 20.0, output_shape)
+        
             
         while True:
-            retval, orig_image = vid.read()
-            if not retval:
-                print("Done!")
-                return
+            
+            try:
+                    retval, orig_image = vid.read()
+                    if not retval:
+                        print("Done!")
+                        return
                 
-            im_size = (self.input_shape[0], self.input_shape[1])    
-            resized = cv2.resize(orig_image, im_size)
-            rgb = cv2.cvtColor(resized, cv2.COLOR_BGR2RGB)
+                    im_size = (self.input_shape[0], self.input_shape[1])    
+                    resized = cv2.resize(orig_image, im_size)
+                    rgb = cv2.cvtColor(resized, cv2.COLOR_BGR2RGB)
             
-            # Reshape to original aspect ratio for later visualization
-            # The resized version is used, to visualize what kind of resolution
-            # the network has to work with.
-            to_draw = cv2.resize(resized, (int(self.input_shape[0]*vidar), self.input_shape[1]))
+                    # Reshape to original aspect ratio for later visualization
+                    # The resized version is used, to visualize what kind of resolution
+                    # the network has to work with.
+                    to_draw = cv2.resize(resized, output_shape)
             
-            # Use model to predict 
-            inputs = [image.img_to_array(rgb)]
-            tmp_inp = np.array(inputs)
-            x = preprocess_input(tmp_inp)
+                    # Use model to predict 
+                    inputs = [image.img_to_array(rgb)]
+                    tmp_inp = np.array(inputs)
+                    x = preprocess_input(tmp_inp)
+                    
+                    y = self.model.predict(x)
             
-            y = self.model.predict(x)
             
+                    # This line creates a new TensorFlow device every time. Is there a 
+                    # way to avoid that?
+                    results = self.bbox_util.detection_out(y)
             
-            # This line creates a new TensorFlow device every time. Is there a 
-            # way to avoid that?
-            results = self.bbox_util.detection_out(y)
-            
-            if len(results) > 0 and len(results[0]) > 0:
-                # Interpret output, only one frame is used 
-                det_label = results[0][:, 0]
-                det_conf = results[0][:, 1]
-                det_xmin = results[0][:, 2]
-                det_ymin = results[0][:, 3]
-                det_xmax = results[0][:, 4]
-                det_ymax = results[0][:, 5]
+                    if len(results) > 0 and len(results[0]) > 0:
+                        # Interpret output, only one frame is used 
+                        det_label = results[0][:, 0]
+                        det_conf = results[0][:, 1]
+                        det_xmin = results[0][:, 2]
+                        det_ymin = results[0][:, 3]
+                        det_xmax = results[0][:, 4]
+                        det_ymax = results[0][:, 5]
 
-                top_indices = [i for i, conf in enumerate(det_conf) if conf >= conf_thresh]
+                        top_indices = [i for i, conf in enumerate(det_conf) if conf >= conf_thresh]
 
-                top_conf = det_conf[top_indices]
-                top_label_indices = det_label[top_indices].tolist()
-                top_xmin = det_xmin[top_indices]
-                top_ymin = det_ymin[top_indices]
-                top_xmax = det_xmax[top_indices]
-                top_ymax = det_ymax[top_indices]
+                        top_conf = det_conf[top_indices]
+                        top_label_indices = det_label[top_indices].tolist()
+                        top_xmin = det_xmin[top_indices]
+                        top_ymin = det_ymin[top_indices]
+                        top_xmax = det_xmax[top_indices]
+                        top_ymax = det_ymax[top_indices]
 
-                for i in range(top_conf.shape[0]):
-                    xmin = int(round(top_xmin[i] * to_draw.shape[1]))
-                    ymin = int(round(top_ymin[i] * to_draw.shape[0]))
-                    xmax = int(round(top_xmax[i] * to_draw.shape[1]))
-                    ymax = int(round(top_ymax[i] * to_draw.shape[0]))
+                        for i in range(top_conf.shape[0]):
+                            xmin = int(round(top_xmin[i] * to_draw.shape[1]))
+                            ymin = int(round(top_ymin[i] * to_draw.shape[0]))
+                            xmax = int(round(top_xmax[i] * to_draw.shape[1]))
+                            ymax = int(round(top_ymax[i] * to_draw.shape[0]))
 
-                    # Draw the box on top of the to_draw image
-                    class_num = int(top_label_indices[i])
-                    cv2.rectangle(to_draw, (xmin, ymin), (xmax, ymax), 
-                                  self.class_colors[class_num], 2)
-                    text = self.class_names[class_num] + " " + ('%.2f' % top_conf[i])
+                            # Draw the box on top of the to_draw image
+                            class_num = int(top_label_indices[i])
+                            cv2.rectangle(to_draw, (xmin, ymin), (xmax, ymax), 
+                                          self.class_colors[class_num], 2)
+                            text = self.class_names[class_num] + " " + ('%.2f' % top_conf[i])
 
-                    text_top = (xmin, ymin-10)
-                    text_bot = (xmin + 80, ymin + 5)
-                    text_pos = (xmin + 5, ymin)
-                    cv2.rectangle(to_draw, text_top, text_bot, self.class_colors[class_num], -1)
-                    cv2.putText(to_draw, text, text_pos, cv2.FONT_HERSHEY_SIMPLEX, 0.35, (0,0,0), 1)
+                            text_top = (xmin, ymin-10)
+                            text_bot = (xmin + 80, ymin + 5)
+                            text_pos = (xmin + 5, ymin)
+                            cv2.rectangle(to_draw, text_top, text_bot, self.class_colors[class_num], -1)
+                            cv2.putText(to_draw, text, text_pos, cv2.FONT_HERSHEY_SIMPLEX, 0.35, (0,0,0), 1)
+                    
             
-            # Calculate FPS
-            # This computes FPS for everything, not just the model's execution 
-            # which may or may not be what you want
-            curr_time = timer()
-            exec_time = curr_time - prev_time
-            prev_time = curr_time
-            accum_time = accum_time + exec_time
-            curr_fps = curr_fps + 1
-            if accum_time > 1:
-                accum_time = accum_time - 1
-                fps = "FPS: " + str(curr_fps)
-                curr_fps = 0
+                    # Calculate FPS
+                    # This computes FPS for everything, not just the model's execution 
+                    # which may or may not be what you want
+                    curr_time = timer()
+                    exec_time = curr_time - prev_time
+                    prev_time = curr_time
+                    accum_time = accum_time + exec_time
+                    curr_fps = curr_fps + 1
+                    if accum_time > 1:
+                        accum_time = accum_time - 1
+                        fps = "FPS: " + str(curr_fps)
+                        curr_fps = 0
             
-            # Draw FPS in top left corner
-            cv2.rectangle(to_draw, (0,0), (50, 17), (255,255,255), -1)
-            cv2.putText(to_draw, fps, (3,10), cv2.FONT_HERSHEY_SIMPLEX, 0.35, (0,0,0), 1)
+                    # Draw FPS in top left corner
+                    cv2.rectangle(to_draw, (0,0), (50, 17), (255,255,255), -1)
+                    cv2.putText(to_draw, fps, (3,10), cv2.FONT_HERSHEY_SIMPLEX, 0.35, (0,0,0), 1)
             
-            cv2.imshow("SSD result", to_draw)
-            cv2.waitKey(10)
+                    #cv2.imshow("SSD result", to_draw)
+                    #cv2.waitKey(10)
+                    
+                    out.write(to_draw)
+            
+            ## handling ctrl c ##
+            except KeyboardInterrupt:
+                out.release()
+                cmd = ['avconv -i ./output_video/.%s.avi -vcodec libx264 ./output_video/%s.mp4' % (video_name,video_name)]
+                #cmd2 = ['rm ./output_video/.output.avi']
+                subprocess.call(cmd, shell=True)
+                #subprocess.call(cmd2, shell=True)
+                break
             
         
