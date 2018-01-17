@@ -5,14 +5,15 @@ import keras
 from keras.applications.imagenet_utils import preprocess_input
 from keras.backend.tensorflow_backend import set_session
 from keras.models import Model
-from keras.preprocessing import image 
+from keras.preprocessing import image
+import datetime
+import subprocess
 import pickle
 import numpy as np
+import pandas as pd
 from random import shuffle
 from scipy.misc import imread, imresize
 from timeit import default_timer as timer
-import datetime
-import subprocess
 
 import sys
 sys.path.append("..")
@@ -20,29 +21,6 @@ from ssd_utils import BBoxUtility
 
 
 class VideoTest(object):
-    """ Class for testing a trained SSD model on a video file and show the
-        result in a window. Class is designed so that one VideoTest object 
-        can be created for a model, and the same object can then be used on 
-        multiple videos and webcams.
-        
-        Arguments:
-            class_names: A list of strings, each containing the name of a class.
-                         The first name should be that of the background class
-                         which is not used.
-                         
-            model:       An SSD model. It should already be trained for 
-                         images similar to the video to test on.
-                         
-            input_shape: The shape that the model expects for its input, 
-                         as a tuple, for example (300, 300, 3)    
-                         
-            bbox_util:   An instance of the BBoxUtility class in ssd_utils.py
-                         The BBoxUtility needs to be instantiated with 
-                         the same number of classes as the length of        
-                         class_names.
-    
-    """
-    
     def __init__(self, class_names, model, input_shape):
         self.class_names = class_names
         self.num_classes = len(class_names)
@@ -65,21 +43,6 @@ class VideoTest(object):
             self.class_colors.append(col) 
         
     def run(self, video_path = 0, start_frame = 0, conf_thresh = 0.6):
-        """ Runs the test on a video (or webcam)
-        
-        # Arguments
-        video_path: A file path to a video to be tested on. Can also be a number, 
-                    in which case the webcam with the same number (i.e. 0) is 
-                    used instead
-                    
-        start_frame: The number of the first frame of the video to be processed
-                     by the network. 
-                     
-        conf_thresh: Threshold of confidence. Any boxes with lower confidence 
-                     are not visualized.
-                    
-        """
-    
         vid = cv2.VideoCapture(video_path)
         if not vid.isOpened():
             raise IOError(("Couldn't open video file or webcam. If you're "
@@ -100,16 +63,37 @@ class VideoTest(object):
         prev_time = timer()
         
         
-        ## video output ##
+        ## hatta code below ##
+        
+        # time as name constant
         now = datetime.datetime.now()
-        video_name = now.strftime("%Y%m%d%H%M%S")
+        time_as_name = now.strftime("%Y%m%d%H%M%S")
+        
+        # csv output
+        item_1, item_2, item_3 = ('car', 'bus', 'person')
+        global df_tmp
+        df_tmp = pd.DataFrame(columns=('frame','object','coord'))
+        csv_res = pd.DataFrame(columns=
+                               ('count_'+item_1,
+                                'coordinates_'+item_1,
+                                'count_'+item_2,
+                                'coordinates_'+item_2,
+                                'count_'+item_3,
+                                'coordinates_'+item_3))
+        csv_res.index.name = 'frame'
+        csv_name = 'output_csv/'+time_as_name+'.csv'
+        csv_res.to_csv(csv_name)
+        
+        # video output
         output_shape = (int(self.input_shape[0]*vidar),self.input_shape[1])
         fourcc = cv2.VideoWriter_fourcc(*'XVID')
-        out = cv2.VideoWriter('output_video/.%s.avi' % video_name, fourcc, 20.0, output_shape)
+        out = cv2.VideoWriter('output_video/.%s.avi' % time_as_name, fourcc, 20.0, output_shape)
+        
+        ## hatta code above ##
         
             
         while True:
-            
+            ## for ctrl c handling this code was modified ##
             try:
                     retval, orig_image = vid.read()
                     if not retval:
@@ -119,26 +103,14 @@ class VideoTest(object):
                     im_size = (self.input_shape[0], self.input_shape[1])    
                     resized = cv2.resize(orig_image, im_size)
                     rgb = cv2.cvtColor(resized, cv2.COLOR_BGR2RGB)
-            
-                    # Reshape to original aspect ratio for later visualization
-                    # The resized version is used, to visualize what kind of resolution
-                    # the network has to work with.
                     to_draw = cv2.resize(resized, output_shape)
-            
-                    # Use model to predict 
                     inputs = [image.img_to_array(rgb)]
                     tmp_inp = np.array(inputs)
                     x = preprocess_input(tmp_inp)
-                    
                     y = self.model.predict(x)
-            
-            
-                    # This line creates a new TensorFlow device every time. Is there a 
-                    # way to avoid that?
                     results = self.bbox_util.detection_out(y)
             
                     if len(results) > 0 and len(results[0]) > 0:
-                        # Interpret output, only one frame is used 
                         det_label = results[0][:, 0]
                         det_conf = results[0][:, 1]
                         det_xmin = results[0][:, 2]
@@ -161,7 +133,6 @@ class VideoTest(object):
                             xmax = int(round(top_xmax[i] * to_draw.shape[1]))
                             ymax = int(round(top_ymax[i] * to_draw.shape[0]))
 
-                            # Draw the box on top of the to_draw image
                             class_num = int(top_label_indices[i])
                             cv2.rectangle(to_draw, (xmin, ymin), (xmax, ymax), 
                                           self.class_colors[class_num], 2)
@@ -175,10 +146,7 @@ class VideoTest(object):
                             
                             print(text)
                     
-            
-                    # Calculate FPS
-                    # This computes FPS for everything, not just the model's execution 
-                    # which may or may not be what you want
+                    ## FPS ##
                     curr_time = timer()
                     exec_time = curr_time - prev_time
                     prev_time = curr_time
@@ -188,23 +156,41 @@ class VideoTest(object):
                         accum_time = accum_time - 1
                         fps = "FPS: " + str(curr_fps)
                         curr_fps = 0
-            
-                    # Draw FPS in top left corner
+                        
                     cv2.rectangle(to_draw, (0,0), (50, 17), (255,255,255), -1)
                     cv2.putText(to_draw, fps, (3,10), cv2.FONT_HERSHEY_SIMPLEX, 0.35, (0,0,0), 1)
-            
-                    #cv2.imshow("SSD result", to_draw)
-                    #cv2.waitKey(10)
                     
+                    
+                    ## create output csv file ##
+                    df_res = df_tmp.loc[df_tmp['frame']==cur_f]
+                    def ray(x):
+                        res_1 = df_res[df_res['object']==x]
+                        a=res_1.groupby('object').agg({'frame':'count'})
+                        b=res_1.groupby('object')['coord'].apply(list)
+                        res_2=pd.concat([a,b],axis=1)
+                        res_3 = res_2.rename({x:cur_f})
+                        return res_3
+                    
+                    df_res_1 = ray(item_1)
+                    df_res_2 = ray(item_2)
+                    df_res_3 = ray(item_3)
+                    df_res_fin = pd.concat([df_res_1,df_res_2,df_res_3],axis=1)
+                
+                    with open(csv_name,'a') as f:
+                        df_res_fin.to_csv(f, header=False)
+                        
+                        
+                    ## write out the video file ##
                     out.write(to_draw)
+            
             
             ## handling ctrl c ##
             except KeyboardInterrupt:
                 out.release()
                 cmd = ['avconv -i ./output_video/.%s.avi -vcodec libx264 ./output_video/%s.mp4' % (video_name,video_name)]
-                #cmd2 = ['rm ./output_video/.output.avi']
+                cmd2 = ['rm ./output_video/.output.avi']
                 subprocess.call(cmd, shell=True)
-                #subprocess.call(cmd2, shell=True)
+                subprocess.call(cmd2, shell=True)
                 break
             
         
