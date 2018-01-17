@@ -144,11 +144,12 @@ class VideoTest(object):
                             cv2.putText(to_draw, text, text_pos, cv2.FONT_HERSHEY_SIMPLEX, 0.35, (0,0,0), 1)
                             
                             
-                            # append incoming data into csv
+                            ## append incoming data into csv ##
                             df = pd.DataFrame({'frame':[cur_f],'object':[self.class_names[class_num]],'coord':[[xmin,ymin,xmax,ymax]]})
                             df_tmp = pd.concat([df_tmp,df.loc[df['frame']==cur_f]],axis=0)
                             
                             #print(text)
+                    
                     
                     ## FPS ##
                     curr_time = timer()
