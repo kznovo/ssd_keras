@@ -63,15 +63,12 @@ class VideoTest(object):
         prev_time = timer()
         
         
-        ## hatta code below ##
-        
         # time as name constant
         now = datetime.datetime.now()
         time_as_name = now.strftime("%Y%m%d%H%M%S")
         
         # csv output
         item_1, item_2, item_3 = ('car', 'bus', 'person')
-        global df_tmp
         df_tmp = pd.DataFrame(columns=('frame','object','coord'))
         csv_res = pd.DataFrame(columns=
                                ('count_'+item_1,
@@ -87,7 +84,7 @@ class VideoTest(object):
         # video output
         output_shape = (int(self.input_shape[0]*vidar),self.input_shape[1])
         fourcc = cv2.VideoWriter_fourcc(*'XVID')
-        out = cv2.VideoWriter('output_video/.%s.avi' % time_as_name, fourcc, 20.0, output_shape)
+        out = cv2.VideoWriter('output_video/.tmp.avi', fourcc, int(round(vid.get(5))), output_shape)
         
         ## hatta code above ##
         
@@ -99,7 +96,9 @@ class VideoTest(object):
                     if not retval:
                         print("Done!")
                         return
-                
+                    
+                    cur_f = vid.get(1)
+                    
                     im_size = (self.input_shape[0], self.input_shape[1])    
                     resized = cv2.resize(orig_image, im_size)
                     rgb = cv2.cvtColor(resized, cv2.COLOR_BGR2RGB)
@@ -144,7 +143,12 @@ class VideoTest(object):
                             cv2.rectangle(to_draw, text_top, text_bot, self.class_colors[class_num], -1)
                             cv2.putText(to_draw, text, text_pos, cv2.FONT_HERSHEY_SIMPLEX, 0.35, (0,0,0), 1)
                             
-                            print(text)
+                            
+                            # append incoming data into csv
+                            df = pd.DataFrame({'frame':[cur_f],'object':[self.class_names[class_num]],'coord':[[xmin,ymin,xmax,ymax]]})
+                            df_tmp = pd.concat([df_tmp,df.loc[df['frame']==cur_f]],axis=0)
+                            
+                            #print(text)
                     
                     ## FPS ##
                     curr_time = timer()
@@ -175,6 +179,7 @@ class VideoTest(object):
                     df_res_2 = ray(item_2)
                     df_res_3 = ray(item_3)
                     df_res_fin = pd.concat([df_res_1,df_res_2,df_res_3],axis=1)
+                    print(df_res_fin)
                 
                     with open(csv_name,'a') as f:
                         df_res_fin.to_csv(f, header=False)
@@ -187,8 +192,8 @@ class VideoTest(object):
             ## handling ctrl c ##
             except KeyboardInterrupt:
                 out.release()
-                cmd = ['avconv -i ./output_video/.%s.avi -vcodec libx264 ./output_video/%s.mp4' % (video_name,video_name)]
-                cmd2 = ['rm ./output_video/.output.avi']
+                cmd = ['avconv -i ./output_video/.tmp.avi -vcodec libx264 ./output_video/%s.mp4' % time_as_name]
+                cmd2 = ['rm ./output_video/.tmp.avi']
                 subprocess.call(cmd, shell=True)
                 subprocess.call(cmd2, shell=True)
                 break
