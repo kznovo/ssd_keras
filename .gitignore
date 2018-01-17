@@ -11,6 +11,10 @@ __pycache__/
 #HDF5
 *.hdf5
 
+# video
+*.mp4
+*.avi
+
 # Distribution / packaging
 .Python
 env/
@@ -92,3 +96,6 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+# nohup command output
+.out

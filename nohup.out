@@ -1,0 +1,892 @@
+2018-01-17 15:29:36.372279: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2
+2018-01-17 15:29:37.271523: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:892] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2018-01-17 15:29:37.272006: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 0 with properties: 
+name: GeForce GTX 1050 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.4175
+pciBusID: 0000:07:00.0
+totalMemory: 3.94GiB freeMemory: 3.89GiB
+2018-01-17 15:29:37.272036: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX 1050 Ti, pci bus id: 0000:07:00.0, compute capability: 6.1)
+Using TensorFlow backend.
+/home/hatta/.virtualenvs/Singleshot/lib/python3.6/importlib/_bootstrap.py:219: RuntimeWarning: compiletime version 3.5 of module 'tensorflow.python.framework.fast_tensor_util' does not match runtime version 3.6
+  return f(*args, **kwds)
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:40: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(64, (3, 3), activation="relu", name="conv1_1", padding="same")`
+  name='conv1_1')(net['input'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:44: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(64, (3, 3), activation="relu", name="conv1_2", padding="same")`
+  name='conv1_2')(net['conv1_1'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:46: UserWarning: Update your `MaxPooling2D` call to the Keras 2 API: `MaxPooling2D((2, 2), strides=(2, 2), name="pool1", padding="same")`
+  name='pool1')(net['conv1_2'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:51: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(128, (3, 3), activation="relu", name="conv2_1", padding="same")`
+  name='conv2_1')(net['pool1'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:55: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(128, (3, 3), activation="relu", name="conv2_2", padding="same")`
+  name='conv2_2')(net['conv2_1'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:57: UserWarning: Update your `MaxPooling2D` call to the Keras 2 API: `MaxPooling2D((2, 2), strides=(2, 2), name="pool2", padding="same")`
+  name='pool2')(net['conv2_2'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:62: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(256, (3, 3), activation="relu", name="conv3_1", padding="same")`
+  name='conv3_1')(net['pool2'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:66: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(256, (3, 3), activation="relu", name="conv3_2", padding="same")`
+  name='conv3_2')(net['conv3_1'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:70: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(256, (3, 3), activation="relu", name="conv3_3", padding="same")`
+  name='conv3_3')(net['conv3_2'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:72: UserWarning: Update your `MaxPooling2D` call to the Keras 2 API: `MaxPooling2D((2, 2), strides=(2, 2), name="pool3", padding="same")`
+  name='pool3')(net['conv3_3'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:77: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(512, (3, 3), activation="relu", name="conv4_1", padding="same")`
+  name='conv4_1')(net['pool3'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:81: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(512, (3, 3), activation="relu", name="conv4_2", padding="same")`
+  name='conv4_2')(net['conv4_1'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:85: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(512, (3, 3), activation="relu", name="conv4_3", padding="same")`
+  name='conv4_3')(net['conv4_2'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:87: UserWarning: Update your `MaxPooling2D` call to the Keras 2 API: `MaxPooling2D((2, 2), strides=(2, 2), name="pool4", padding="same")`
+  name='pool4')(net['conv4_3'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:92: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(512, (3, 3), activation="relu", name="conv5_1", padding="same")`
+  name='conv5_1')(net['pool4'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:96: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(512, (3, 3), activation="relu", name="conv5_2", padding="same")`
+  name='conv5_2')(net['conv5_1'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:100: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(512, (3, 3), activation="relu", name="conv5_3", padding="same")`
+  name='conv5_3')(net['conv5_2'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:102: UserWarning: Update your `MaxPooling2D` call to the Keras 2 API: `MaxPooling2D((3, 3), strides=(1, 1), name="pool5", padding="same")`
+  name='pool5')(net['conv5_3'])
+/home/hatta/.virtualenvs/Singleshot/lib/python3.6/site-packages/keras/legacy/layers.py:755: UserWarning: The `AtrousConvolution2D` layer  has been deprecated. Use instead the `Conv2D` layer with the `dilation_rate` argument.
+  warnings.warn('The `AtrousConvolution2D` layer '
+/home/hatta/.virtualenvs/Singleshot/lib/python3.6/site-packages/keras/legacy/layers.py:759: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(1024, (3, 3), activation="relu", name="fc6", dilation_rate=(6, 6), padding="same")`
+  return Conv2D(*args, **kwargs)
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:110: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(1024, (1, 1), activation="relu", name="fc7", padding="same")`
+  border_mode='same', name='fc7')(net['fc6'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:115: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(256, (1, 1), activation="relu", name="conv6_1", padding="same")`
+  name='conv6_1')(net['fc7'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:118: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(512, (3, 3), activation="relu", name="conv6_2", strides=(2, 2), padding="same")`
+  name='conv6_2')(net['conv6_1'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:122: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(128, (1, 1), activation="relu", name="conv7_1", padding="same")`
+  name='conv7_1')(net['conv6_2'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:126: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(256, (3, 3), activation="relu", name="conv7_2", strides=(2, 2), padding="valid")`
+  name='conv7_2')(net['conv7_2'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:130: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(128, (1, 1), activation="relu", name="conv8_1", padding="same")`
+  name='conv8_1')(net['conv7_2'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:133: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(256, (3, 3), activation="relu", name="conv8_2", strides=(2, 2), padding="same")`
+  name='conv8_2')(net['conv8_1'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:140: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(12, (3, 3), name="conv4_3_norm_mbox_loc", padding="same")`
+  name='conv4_3_norm_mbox_loc')(net['conv4_3_norm'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:148: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(6, (3, 3), name="conv4_3_norm_mbox_conf_2", padding="same")`
+  name=name)(net['conv4_3_norm'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:160: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(24, (3, 3), name="fc7_mbox_loc", padding="same")`
+  name='fc7_mbox_loc')(net['fc7'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:168: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(12, (3, 3), name="fc7_mbox_conf_2", padding="same")`
+  name=name)(net['fc7'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:178: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(24, (3, 3), name="conv6_2_mbox_loc", padding="same")`
+  name='conv6_2_mbox_loc')(net['conv6_2'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:186: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(12, (3, 3), name="conv6_2_mbox_conf_2", padding="same")`
+  name=name)(net['conv6_2'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:197: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(24, (3, 3), name="conv7_2_mbox_loc", padding="same")`
+  name='conv7_2_mbox_loc')(net['conv7_2'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:205: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(12, (3, 3), name="conv7_2_mbox_conf_2", padding="same")`
+  name=name)(net['conv7_2'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:216: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(24, (3, 3), name="conv8_2_mbox_loc", padding="same")`
+  name='conv8_2_mbox_loc')(net['conv8_2'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:224: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(12, (3, 3), name="conv8_2_mbox_conf_2", padding="same")`
+  name=name)(net['conv8_2'])
+2018-01-17 15:29:38.074928: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX 1050 Ti, pci bus id: 0000:07:00.0, compute capability: 6.1)
+2018-01-17 15:29:45.645156: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 3.09GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+Epoch 1/100
+
+  1/222 [..............................] - ETA: 29:37 - loss: 7.5369 - acc: 0.1306
+  2/222 [..............................] - ETA: 16:14 - loss: 6.6557 - acc: 0.1140
+  3/222 [..............................] - ETA: 11:49 - loss: 6.7064 - acc: 0.1148
+  4/222 [..............................] - ETA: 9:33 - loss: 6.4761 - acc: 0.1128 
+  5/222 [..............................] - ETA: 8:11 - loss: 6.0383 - acc: 0.1155
+  6/222 [..............................] - ETA: 7:16 - loss: 5.8274 - acc: 0.1239
+  7/222 [..............................] - ETA: 6:37 - loss: 5.6992 - acc: 0.1381
+  8/222 [>.............................] - ETA: 6:07 - loss: 5.4327 - acc: 0.1520/home/hatta/workspace/hatta_ssdkeras/ssd.py:258: UserWarning: The `merge` function is deprecated and will be removed after 08/2017. Use instead layers from `keras.layers.merge`, e.g. `add`, `concatenate`, etc.
+  mode='concat', concat_axis=1, name='mbox_loc')
+/home/hatta/.virtualenvs/Singleshot/lib/python3.6/site-packages/keras/legacy/layers.py:458: UserWarning: The `Merge` layer is deprecated and will be removed after 08/2017. Use instead layers from `keras.layers.merge`, e.g. `add`, `concatenate`, etc.
+  name=name)
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:265: UserWarning: The `merge` function is deprecated and will be removed after 08/2017. Use instead layers from `keras.layers.merge`, e.g. `add`, `concatenate`, etc.
+  mode='concat', concat_axis=1, name='mbox_conf')
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:273: UserWarning: The `merge` function is deprecated and will be removed after 08/2017. Use instead layers from `keras.layers.merge`, e.g. `add`, `concatenate`, etc.
+  name='mbox_priorbox')
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:288: UserWarning: The `merge` function is deprecated and will be removed after 08/2017. Use instead layers from `keras.layers.merge`, e.g. `add`, `concatenate`, etc.
+  name='predictions')
+training.py:252: UserWarning: The semantics of the Keras 2 argument `steps_per_epoch` is not the same as the Keras 1 argument `samples_per_epoch`. `steps_per_epoch` is the number of batches to draw from the generator at each epoch. Basically steps_per_epoch = samples_per_epoch/batch_size. Similarly `nb_val_samples`->`validation_steps` and `val_samples`->`steps` arguments have changed. Update your method calls accordingly.
+  nb_worker=1)
+training.py:252: UserWarning: Update your `fit_generator` call to the Keras 2 API: `fit_generator(<generator..., 222, 100, verbose=1, callbacks=[<keras.ca..., validation_data=<generator..., validation_steps=56, workers=1)`
+  nb_worker=1)
+/home/hatta/.virtualenvs/Singleshot/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py:96: UserWarning: Converting sparse IndexedSlices to a dense Tensor of unknown shape. This may consume a large amount of memory.
+  "Converting sparse IndexedSlices to a dense Tensor of unknown shape. "
+Traceback (most recent call last):
+  File "training.py", line 252, in <module>
+    nb_worker=1)
+  File "/home/hatta/.virtualenvs/Singleshot/lib/python3.6/site-packages/keras/legacy/interfaces.py", line 87, in wrapper
+    return func(*args, **kwargs)
+  File "/home/hatta/.virtualenvs/Singleshot/lib/python3.6/site-packages/keras/engine/training.py", line 2147, in fit_generator
+    class_weight=class_weight)
+  File "/home/hatta/.virtualenvs/Singleshot/lib/python3.6/site-packages/keras/engine/training.py", line 1839, in train_on_batch
+    outputs = self.train_function(ins)
+  File "/home/hatta/.virtualenvs/Singleshot/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py", line 2357, in __call__
+    **self.session_kwargs)
+  File "/home/hatta/.virtualenvs/Singleshot/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 889, in run
+    run_metadata_ptr)
+  File "/home/hatta/.virtualenvs/Singleshot/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1120, in _run
+    feed_dict_tensor, options, run_metadata)
+  File "/home/hatta/.virtualenvs/Singleshot/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1317, in _do_run
+    options, run_metadata)
+  File "/home/hatta/.virtualenvs/Singleshot/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1323, in _do_call
+    return fn(*args)
+  File "/home/hatta/.virtualenvs/Singleshot/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1302, in _run_fn
+    status, run_metadata)
+KeyboardInterrupt
+2018-01-17 15:30:09.499953: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2
+2018-01-17 15:30:10.397037: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:892] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2018-01-17 15:30:10.397509: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 0 with properties: 
+name: GeForce GTX 1050 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.4175
+pciBusID: 0000:07:00.0
+totalMemory: 3.94GiB freeMemory: 3.89GiB
+2018-01-17 15:30:10.397542: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX 1050 Ti, pci bus id: 0000:07:00.0, compute capability: 6.1)
+Using TensorFlow backend.
+/home/hatta/.virtualenvs/Singleshot/lib/python3.6/importlib/_bootstrap.py:219: RuntimeWarning: compiletime version 3.5 of module 'tensorflow.python.framework.fast_tensor_util' does not match runtime version 3.6
+  return f(*args, **kwds)
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:40: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(64, (3, 3), activation="relu", name="conv1_1", padding="same")`
+  name='conv1_1')(net['input'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:44: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(64, (3, 3), activation="relu", name="conv1_2", padding="same")`
+  name='conv1_2')(net['conv1_1'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:46: UserWarning: Update your `MaxPooling2D` call to the Keras 2 API: `MaxPooling2D((2, 2), strides=(2, 2), name="pool1", padding="same")`
+  name='pool1')(net['conv1_2'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:51: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(128, (3, 3), activation="relu", name="conv2_1", padding="same")`
+  name='conv2_1')(net['pool1'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:55: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(128, (3, 3), activation="relu", name="conv2_2", padding="same")`
+  name='conv2_2')(net['conv2_1'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:57: UserWarning: Update your `MaxPooling2D` call to the Keras 2 API: `MaxPooling2D((2, 2), strides=(2, 2), name="pool2", padding="same")`
+  name='pool2')(net['conv2_2'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:62: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(256, (3, 3), activation="relu", name="conv3_1", padding="same")`
+  name='conv3_1')(net['pool2'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:66: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(256, (3, 3), activation="relu", name="conv3_2", padding="same")`
+  name='conv3_2')(net['conv3_1'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:70: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(256, (3, 3), activation="relu", name="conv3_3", padding="same")`
+  name='conv3_3')(net['conv3_2'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:72: UserWarning: Update your `MaxPooling2D` call to the Keras 2 API: `MaxPooling2D((2, 2), strides=(2, 2), name="pool3", padding="same")`
+  name='pool3')(net['conv3_3'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:77: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(512, (3, 3), activation="relu", name="conv4_1", padding="same")`
+  name='conv4_1')(net['pool3'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:81: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(512, (3, 3), activation="relu", name="conv4_2", padding="same")`
+  name='conv4_2')(net['conv4_1'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:85: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(512, (3, 3), activation="relu", name="conv4_3", padding="same")`
+  name='conv4_3')(net['conv4_2'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:87: UserWarning: Update your `MaxPooling2D` call to the Keras 2 API: `MaxPooling2D((2, 2), strides=(2, 2), name="pool4", padding="same")`
+  name='pool4')(net['conv4_3'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:92: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(512, (3, 3), activation="relu", name="conv5_1", padding="same")`
+  name='conv5_1')(net['pool4'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:96: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(512, (3, 3), activation="relu", name="conv5_2", padding="same")`
+  name='conv5_2')(net['conv5_1'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:100: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(512, (3, 3), activation="relu", name="conv5_3", padding="same")`
+  name='conv5_3')(net['conv5_2'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:102: UserWarning: Update your `MaxPooling2D` call to the Keras 2 API: `MaxPooling2D((3, 3), strides=(1, 1), name="pool5", padding="same")`
+  name='pool5')(net['conv5_3'])
+/home/hatta/.virtualenvs/Singleshot/lib/python3.6/site-packages/keras/legacy/layers.py:755: UserWarning: The `AtrousConvolution2D` layer  has been deprecated. Use instead the `Conv2D` layer with the `dilation_rate` argument.
+  warnings.warn('The `AtrousConvolution2D` layer '
+/home/hatta/.virtualenvs/Singleshot/lib/python3.6/site-packages/keras/legacy/layers.py:759: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(1024, (3, 3), activation="relu", name="fc6", dilation_rate=(6, 6), padding="same")`
+  return Conv2D(*args, **kwargs)
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:110: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(1024, (1, 1), activation="relu", name="fc7", padding="same")`
+  border_mode='same', name='fc7')(net['fc6'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:115: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(256, (1, 1), activation="relu", name="conv6_1", padding="same")`
+  name='conv6_1')(net['fc7'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:118: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(512, (3, 3), activation="relu", name="conv6_2", strides=(2, 2), padding="same")`
+  name='conv6_2')(net['conv6_1'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:122: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(128, (1, 1), activation="relu", name="conv7_1", padding="same")`
+  name='conv7_1')(net['conv6_2'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:126: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(256, (3, 3), activation="relu", name="conv7_2", strides=(2, 2), padding="valid")`
+  name='conv7_2')(net['conv7_2'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:130: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(128, (1, 1), activation="relu", name="conv8_1", padding="same")`
+  name='conv8_1')(net['conv7_2'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:133: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(256, (3, 3), activation="relu", name="conv8_2", strides=(2, 2), padding="same")`
+  name='conv8_2')(net['conv8_1'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:140: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(12, (3, 3), name="conv4_3_norm_mbox_loc", padding="same")`
+  name='conv4_3_norm_mbox_loc')(net['conv4_3_norm'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:148: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(6, (3, 3), name="conv4_3_norm_mbox_conf_2", padding="same")`
+  name=name)(net['conv4_3_norm'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:160: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(24, (3, 3), name="fc7_mbox_loc", padding="same")`
+  name='fc7_mbox_loc')(net['fc7'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:168: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(12, (3, 3), name="fc7_mbox_conf_2", padding="same")`
+  name=name)(net['fc7'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:178: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(24, (3, 3), name="conv6_2_mbox_loc", padding="same")`
+  name='conv6_2_mbox_loc')(net['conv6_2'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:186: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(12, (3, 3), name="conv6_2_mbox_conf_2", padding="same")`
+  name=name)(net['conv6_2'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:197: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(24, (3, 3), name="conv7_2_mbox_loc", padding="same")`
+  name='conv7_2_mbox_loc')(net['conv7_2'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:205: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(12, (3, 3), name="conv7_2_mbox_conf_2", padding="same")`
+  name=name)(net['conv7_2'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:216: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(24, (3, 3), name="conv8_2_mbox_loc", padding="same")`
+  name='conv8_2_mbox_loc')(net['conv8_2'])
+/home/hatta/workspace/hatta_ssdkeras/ssd.py:224: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(12, (3, 3), name="conv8_2_mbox_conf_2", padding="same")`
+  name=name)(net['conv8_2'])
+2018-01-17 15:30:11.191294: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX 1050 Ti, pci bus id: 0000:07:00.0, compute capability: 6.1)
+2018-01-17 15:30:19.205455: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 3.09GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+Epoch 1/100
+
+  1/222 [..............................] - ETA: 31:10 - loss: 9.7558 - acc: 0.1193
+  2/222 [..............................] - ETA: 17:08 - loss: 8.2148 - acc: 0.1199
+  3/222 [..............................] - ETA: 12:26 - loss: 6.9798 - acc: 0.1167
+  4/222 [..............................] - ETA: 10:01 - loss: 6.6217 - acc: 0.1127
+  5/222 [..............................] - ETA: 8:33 - loss: 6.1109 - acc: 0.1149 
+  6/222 [..............................] - ETA: 7:34 - loss: 5.6624 - acc: 0.1171
+  7/222 [..............................] - ETA: 6:55 - loss: 5.5826 - acc: 0.1232
+  8/222 [>.............................] - ETA: 6:23 - loss: 5.4572 - acc: 0.1329
+  9/222 [>.............................] - ETA: 5:58 - loss: 5.3695 - acc: 0.1461
+ 10/222 [>.............................] - ETA: 5:38 - loss: 5.2240 - acc: 0.1618
+ 11/222 [>.............................] - ETA: 5:22 - loss: 5.1661 - acc: 0.1790
+ 12/222 [>.............................] - ETA: 5:08 - loss: 5.0325 - acc: 0.1967
+ 13/222 [>.............................] - ETA: 4:56 - loss: 4.9009 - acc: 0.2124
+ 14/222 [>.............................] - ETA: 4:45 - loss: 4.7759 - acc: 0.2255
+ 15/222 [=>............................] - ETA: 4:36 - loss: 4.6692 - acc: 0.2354
+ 16/222 [=>............................] - ETA: 4:28 - loss: 4.6449 - acc: 0.2435
+ 17/222 [=>............................] - ETA: 4:20 - loss: 4.5687 - acc: 0.2507
+ 18/222 [=>............................] - ETA: 4:19 - loss: 4.4403 - acc: 0.2565
+ 19/222 [=>............................] - ETA: 4:16 - loss: 4.3311 - acc: 0.2601
+ 20/222 [=>............................] - ETA: 4:12 - loss: 4.3014 - acc: 0.2643
+ 21/222 [=>............................] - ETA: 4:11 - loss: 4.2317 - acc: 0.2680
+ 22/222 [=>............................] - ETA: 4:09 - loss: 4.1964 - acc: 0.2714
+ 23/222 [==>...........................] - ETA: 4:07 - loss: 4.1113 - acc: 0.2747
+ 24/222 [==>...........................] - ETA: 4:04 - loss: 4.0705 - acc: 0.2777
+ 25/222 [==>...........................] - ETA: 4:02 - loss: 4.0196 - acc: 0.2795
+ 26/222 [==>...........................] - ETA: 3:59 - loss: 3.9651 - acc: 0.2815
+ 27/222 [==>...........................] - ETA: 4:03 - loss: 3.9013 - acc: 0.2822
+ 28/222 [==>...........................] - ETA: 4:01 - loss: 3.8444 - acc: 0.2837
+ 29/222 [==>...........................] - ETA: 3:59 - loss: 3.8261 - acc: 0.2847
+ 30/222 [===>..........................] - ETA: 3:58 - loss: 3.7879 - acc: 0.2863
+ 31/222 [===>..........................] - ETA: 3:56 - loss: 3.7633 - acc: 0.2878
+ 32/222 [===>..........................] - ETA: 3:55 - loss: 3.7131 - acc: 0.2884
+ 33/222 [===>..........................] - ETA: 3:54 - loss: 3.6615 - acc: 0.2887
+ 34/222 [===>..........................] - ETA: 3:51 - loss: 3.6194 - acc: 0.2886
+ 35/222 [===>..........................] - ETA: 3:50 - loss: 3.5864 - acc: 0.2886
+ 36/222 [===>..........................] - ETA: 3:49 - loss: 3.5500 - acc: 0.2883
+ 37/222 [====>.........................] - ETA: 3:47 - loss: 3.5052 - acc: 0.2887
+ 38/222 [====>.........................] - ETA: 3:45 - loss: 3.4700 - acc: 0.2900
+ 39/222 [====>.........................] - ETA: 3:42 - loss: 3.4474 - acc: 0.2910
+ 40/222 [====>.........................] - ETA: 3:45 - loss: 3.4154 - acc: 0.2924
+ 41/222 [====>.........................] - ETA: 3:44 - loss: 3.3777 - acc: 0.2936
+ 42/222 [====>.........................] - ETA: 3:42 - loss: 3.3735 - acc: 0.2949
+ 43/222 [====>.........................] - ETA: 3:40 - loss: 3.3296 - acc: 0.2959
+ 44/222 [====>.........................] - ETA: 3:39 - loss: 3.3095 - acc: 0.2972
+ 45/222 [=====>........................] - ETA: 3:36 - loss: 3.2838 - acc: 0.2978
+ 46/222 [=====>........................] - ETA: 3:35 - loss: 3.2548 - acc: 0.2986
+ 47/222 [=====>........................] - ETA: 3:34 - loss: 3.2257 - acc: 0.2996
+ 48/222 [=====>........................] - ETA: 3:33 - loss: 3.2053 - acc: 0.2999
+ 49/222 [=====>........................] - ETA: 3:31 - loss: 3.1872 - acc: 0.3007
+ 50/222 [=====>........................] - ETA: 3:29 - loss: 3.1531 - acc: 0.3011
+ 51/222 [=====>........................] - ETA: 3:28 - loss: 3.1286 - acc: 0.3016
+ 52/222 [======>.......................] - ETA: 3:26 - loss: 3.1015 - acc: 0.3019
+ 53/222 [======>.......................] - ETA: 3:28 - loss: 3.0799 - acc: 0.3021
+ 54/222 [======>.......................] - ETA: 3:27 - loss: 3.0742 - acc: 0.3023
+ 55/222 [======>.......................] - ETA: 3:25 - loss: 3.0552 - acc: 0.3021
+ 56/222 [======>.......................] - ETA: 3:23 - loss: 3.0437 - acc: 0.3020
+ 57/222 [======>.......................] - ETA: 3:22 - loss: 3.0250 - acc: 0.3019
+ 58/222 [======>.......................] - ETA: 3:21 - loss: 3.0092 - acc: 0.3015
+ 59/222 [======>.......................] - ETA: 3:19 - loss: 2.9886 - acc: 0.3013
+ 60/222 [=======>......................] - ETA: 3:18 - loss: 2.9663 - acc: 0.3011
+ 61/222 [=======>......................] - ETA: 3:16 - loss: 2.9414 - acc: 0.3009
+ 62/222 [=======>......................] - ETA: 3:15 - loss: 2.9210 - acc: 0.3012
+ 63/222 [=======>......................] - ETA: 3:13 - loss: 2.9010 - acc: 0.3012
+ 64/222 [=======>......................] - ETA: 3:12 - loss: 2.8823 - acc: 0.3017
+ 65/222 [=======>......................] - ETA: 3:11 - loss: 2.8673 - acc: 0.3023
+ 66/222 [=======>......................] - ETA: 3:11 - loss: 2.8512 - acc: 0.3032
+ 67/222 [========>.....................] - ETA: 3:10 - loss: 2.8337 - acc: 0.3036
+ 68/222 [========>.....................] - ETA: 3:08 - loss: 2.8183 - acc: 0.3042
+ 69/222 [========>.....................] - ETA: 3:07 - loss: 2.8087 - acc: 0.3053
+ 70/222 [========>.....................] - ETA: 3:06 - loss: 2.7929 - acc: 0.3056
+ 71/222 [========>.....................] - ETA: 3:04 - loss: 2.7838 - acc: 0.3062
+ 72/222 [========>.....................] - ETA: 3:03 - loss: 2.7723 - acc: 0.3065
+ 73/222 [========>.....................] - ETA: 3:02 - loss: 2.7588 - acc: 0.3064
+ 74/222 [=========>....................] - ETA: 3:00 - loss: 2.7489 - acc: 0.3069
+ 75/222 [=========>....................] - ETA: 2:59 - loss: 2.7442 - acc: 0.3071
+ 76/222 [=========>....................] - ETA: 2:57 - loss: 2.7263 - acc: 0.3077
+ 77/222 [=========>....................] - ETA: 2:56 - loss: 2.7093 - acc: 0.3086
+ 78/222 [=========>....................] - ETA: 2:55 - loss: 2.7004 - acc: 0.3090
+ 79/222 [=========>....................] - ETA: 2:55 - loss: 2.6833 - acc: 0.3095
+ 80/222 [=========>....................] - ETA: 2:54 - loss: 2.6676 - acc: 0.3099
+ 81/222 [=========>....................] - ETA: 2:52 - loss: 2.6557 - acc: 0.3103
+ 82/222 [==========>...................] - ETA: 2:51 - loss: 2.6554 - acc: 0.3105
+ 83/222 [==========>...................] - ETA: 2:49 - loss: 2.6365 - acc: 0.3104
+ 84/222 [==========>...................] - ETA: 2:48 - loss: 2.6219 - acc: 0.3107
+ 85/222 [==========>...................] - ETA: 2:46 - loss: 2.6140 - acc: 0.3108
+ 86/222 [==========>...................] - ETA: 2:45 - loss: 2.6052 - acc: 0.3113
+ 87/222 [==========>...................] - ETA: 2:44 - loss: 2.6078 - acc: 0.3119
+ 88/222 [==========>...................] - ETA: 2:42 - loss: 2.6005 - acc: 0.3128
+ 89/222 [===========>..................] - ETA: 2:41 - loss: 2.5941 - acc: 0.3133
+ 90/222 [===========>..................] - ETA: 2:40 - loss: 2.5808 - acc: 0.3137
+ 91/222 [===========>..................] - ETA: 2:39 - loss: 2.5747 - acc: 0.3136
+ 92/222 [===========>..................] - ETA: 2:39 - loss: 2.5649 - acc: 0.3132
+ 93/222 [===========>..................] - ETA: 2:37 - loss: 2.5574 - acc: 0.3131
+ 94/222 [===========>..................] - ETA: 2:36 - loss: 2.5503 - acc: 0.3130
+ 95/222 [===========>..................] - ETA: 2:34 - loss: 2.5390 - acc: 0.3136
+ 96/222 [===========>..................] - ETA: 2:33 - loss: 2.5314 - acc: 0.3138
+ 97/222 [============>.................] - ETA: 2:32 - loss: 2.5186 - acc: 0.3144
+ 98/222 [============>.................] - ETA: 2:30 - loss: 2.5079 - acc: 0.3150
+ 99/222 [============>.................] - ETA: 2:29 - loss: 2.4983 - acc: 0.3157
+100/222 [============>.................] - ETA: 2:28 - loss: 2.4951 - acc: 0.3165
+101/222 [============>.................] - ETA: 2:27 - loss: 2.4823 - acc: 0.3175
+102/222 [============>.................] - ETA: 2:25 - loss: 2.4732 - acc: 0.3181
+103/222 [============>.................] - ETA: 2:24 - loss: 2.4660 - acc: 0.3180
+104/222 [=============>................] - ETA: 2:23 - loss: 2.4541 - acc: 0.3178
+105/222 [=============>................] - ETA: 2:22 - loss: 2.4408 - acc: 0.3178
+106/222 [=============>................] - ETA: 2:21 - loss: 2.4285 - acc: 0.3177
+107/222 [=============>................] - ETA: 2:20 - loss: 2.4227 - acc: 0.3171
+108/222 [=============>................] - ETA: 2:19 - loss: 2.4133 - acc: 0.3176
+109/222 [=============>................] - ETA: 2:17 - loss: 2.4050 - acc: 0.3177
+110/222 [=============>................] - ETA: 2:16 - loss: 2.3962 - acc: 0.3177
+111/222 [==============>...............] - ETA: 2:15 - loss: 2.3865 - acc: 0.3181
+112/222 [==============>...............] - ETA: 2:13 - loss: 2.3762 - acc: 0.3181
+113/222 [==============>...............] - ETA: 2:12 - loss: 2.3650 - acc: 0.3185
+114/222 [==============>...............] - ETA: 2:11 - loss: 2.3583 - acc: 0.3193
+115/222 [==============>...............] - ETA: 2:10 - loss: 2.3518 - acc: 0.3200
+116/222 [==============>...............] - ETA: 2:08 - loss: 2.3434 - acc: 0.3207
+117/222 [==============>...............] - ETA: 2:07 - loss: 2.3372 - acc: 0.3214
+118/222 [==============>...............] - ETA: 2:07 - loss: 2.3325 - acc: 0.3216
+119/222 [===============>..............] - ETA: 2:06 - loss: 2.3271 - acc: 0.3220
+120/222 [===============>..............] - ETA: 2:04 - loss: 2.3227 - acc: 0.3226
+121/222 [===============>..............] - ETA: 2:03 - loss: 2.3147 - acc: 0.3226
+122/222 [===============>..............] - ETA: 2:02 - loss: 2.3061 - acc: 0.3229
+123/222 [===============>..............] - ETA: 2:01 - loss: 2.2970 - acc: 0.3236
+124/222 [===============>..............] - ETA: 1:59 - loss: 2.2874 - acc: 0.3236
+125/222 [===============>..............] - ETA: 1:58 - loss: 2.2804 - acc: 0.3239
+126/222 [================>.............] - ETA: 1:57 - loss: 2.2733 - acc: 0.3242
+127/222 [================>.............] - ETA: 1:55 - loss: 2.2638 - acc: 0.3241
+128/222 [================>.............] - ETA: 1:54 - loss: 2.2553 - acc: 0.3243
+129/222 [================>.............] - ETA: 1:53 - loss: 2.2485 - acc: 0.3245
+130/222 [================>.............] - ETA: 1:51 - loss: 2.2419 - acc: 0.3244
+131/222 [================>.............] - ETA: 1:51 - loss: 2.2370 - acc: 0.3243
+132/222 [================>.............] - ETA: 1:50 - loss: 2.2335 - acc: 0.3243
+133/222 [================>.............] - ETA: 1:48 - loss: 2.2258 - acc: 0.3243
+134/222 [=================>............] - ETA: 1:47 - loss: 2.2202 - acc: 0.3244
+135/222 [=================>............] - ETA: 1:46 - loss: 2.2139 - acc: 0.3248
+136/222 [=================>............] - ETA: 1:44 - loss: 2.2071 - acc: 0.3252
+137/222 [=================>............] - ETA: 1:43 - loss: 2.2029 - acc: 0.3256
+138/222 [=================>............] - ETA: 1:42 - loss: 2.1960 - acc: 0.3261
+139/222 [=================>............] - ETA: 1:41 - loss: 2.1904 - acc: 0.3262
+140/222 [=================>............] - ETA: 1:40 - loss: 2.1828 - acc: 0.3263
+141/222 [==================>...........] - ETA: 1:38 - loss: 2.1763 - acc: 0.3265
+142/222 [==================>...........] - ETA: 1:37 - loss: 2.1680 - acc: 0.3271
+143/222 [==================>...........] - ETA: 1:36 - loss: 2.1612 - acc: 0.3273
+144/222 [==================>...........] - ETA: 1:35 - loss: 2.1540 - acc: 0.3273
+145/222 [==================>...........] - ETA: 1:34 - loss: 2.1489 - acc: 0.3277
+146/222 [==================>...........] - ETA: 1:32 - loss: 2.1420 - acc: 0.3281
+147/222 [==================>...........] - ETA: 1:31 - loss: 2.1365 - acc: 0.3286
+148/222 [===================>..........] - ETA: 1:30 - loss: 2.1343 - acc: 0.3291
+149/222 [===================>..........] - ETA: 1:29 - loss: 2.1297 - acc: 0.3294
+150/222 [===================>..........] - ETA: 1:28 - loss: 2.1238 - acc: 0.3299
+151/222 [===================>..........] - ETA: 1:26 - loss: 2.1162 - acc: 0.3303
+152/222 [===================>..........] - ETA: 1:25 - loss: 2.1091 - acc: 0.3308
+153/222 [===================>..........] - ETA: 1:24 - loss: 2.1035 - acc: 0.3311
+154/222 [===================>..........] - ETA: 1:22 - loss: 2.0974 - acc: 0.3314
+155/222 [===================>..........] - ETA: 1:21 - loss: 2.0917 - acc: 0.3319
+156/222 [====================>.........] - ETA: 1:20 - loss: 2.0849 - acc: 0.3324
+157/222 [====================>.........] - ETA: 1:19 - loss: 2.0786 - acc: 0.3327
+158/222 [====================>.........] - ETA: 1:18 - loss: 2.0754 - acc: 0.3332
+159/222 [====================>.........] - ETA: 1:16 - loss: 2.0719 - acc: 0.3339
+160/222 [====================>.........] - ETA: 1:15 - loss: 2.0654 - acc: 0.3345
+161/222 [====================>.........] - ETA: 1:14 - loss: 2.0609 - acc: 0.3346
+162/222 [====================>.........] - ETA: 1:13 - loss: 2.0560 - acc: 0.3348
+163/222 [=====================>........] - ETA: 1:11 - loss: 2.0520 - acc: 0.3351
+164/222 [=====================>........] - ETA: 1:10 - loss: 2.0493 - acc: 0.3354
+165/222 [=====================>........] - ETA: 1:09 - loss: 2.0446 - acc: 0.3355
+166/222 [=====================>........] - ETA: 1:08 - loss: 2.0393 - acc: 0.3353
+167/222 [=====================>........] - ETA: 1:06 - loss: 2.0352 - acc: 0.3352
+168/222 [=====================>........] - ETA: 1:05 - loss: 2.0293 - acc: 0.3354
+169/222 [=====================>........] - ETA: 1:04 - loss: 2.0230 - acc: 0.3354
+170/222 [=====================>........] - ETA: 1:03 - loss: 2.0174 - acc: 0.3355
+171/222 [======================>.......] - ETA: 1:02 - loss: 2.0136 - acc: 0.3359
+172/222 [======================>.......] - ETA: 1:01 - loss: 2.0075 - acc: 0.3364
+173/222 [======================>.......] - ETA: 59s - loss: 2.0023 - acc: 0.3368 
+174/222 [======================>.......] - ETA: 58s - loss: 1.9970 - acc: 0.3370
+175/222 [======================>.......] - ETA: 57s - loss: 1.9935 - acc: 0.3375
+176/222 [======================>.......] - ETA: 56s - loss: 1.9886 - acc: 0.3379
+177/222 [======================>.......] - ETA: 54s - loss: 1.9849 - acc: 0.3381
+178/222 [=======================>......] - ETA: 53s - loss: 1.9798 - acc: 0.3384
+179/222 [=======================>......] - ETA: 52s - loss: 1.9759 - acc: 0.3389
+180/222 [=======================>......] - ETA: 51s - loss: 1.9726 - acc: 0.3391
+181/222 [=======================>......] - ETA: 49s - loss: 1.9684 - acc: 0.3399
+182/222 [=======================>......] - ETA: 48s - loss: 1.9636 - acc: 0.3403
+183/222 [=======================>......] - ETA: 47s - loss: 1.9570 - acc: 0.3406
+184/222 [=======================>......] - ETA: 46s - loss: 1.9527 - acc: 0.3413
+185/222 [========================>.....] - ETA: 45s - loss: 1.9488 - acc: 0.3417
+186/222 [========================>.....] - ETA: 43s - loss: 1.9425 - acc: 0.3421
+187/222 [========================>.....] - ETA: 42s - loss: 1.9403 - acc: 0.3427
+188/222 [========================>.....] - ETA: 41s - loss: 1.9359 - acc: 0.3432
+189/222 [========================>.....] - ETA: 40s - loss: 1.9325 - acc: 0.3436
+190/222 [========================>.....] - ETA: 38s - loss: 1.9284 - acc: 0.3441
+191/222 [========================>.....] - ETA: 37s - loss: 1.9236 - acc: 0.3448
+192/222 [========================>.....] - ETA: 36s - loss: 1.9202 - acc: 0.3454
+193/222 [=========================>....] - ETA: 35s - loss: 1.9160 - acc: 0.3459
+194/222 [=========================>....] - ETA: 34s - loss: 1.9140 - acc: 0.3467
+195/222 [=========================>....] - ETA: 32s - loss: 1.9103 - acc: 0.3474
+196/222 [=========================>....] - ETA: 31s - loss: 1.9064 - acc: 0.3479
+197/222 [=========================>....] - ETA: 30s - loss: 1.9023 - acc: 0.3484
+198/222 [=========================>....] - ETA: 29s - loss: 1.8994 - acc: 0.3490
+199/222 [=========================>....] - ETA: 28s - loss: 1.8963 - acc: 0.3492
+200/222 [==========================>...] - ETA: 26s - loss: 1.8923 - acc: 0.3495
+201/222 [==========================>...] - ETA: 25s - loss: 1.8876 - acc: 0.3496
+202/222 [==========================>...] - ETA: 24s - loss: 1.8826 - acc: 0.3502
+203/222 [==========================>...] - ETA: 23s - loss: 1.8780 - acc: 0.3504
+204/222 [==========================>...] - ETA: 21s - loss: 1.8751 - acc: 0.3507
+205/222 [==========================>...] - ETA: 20s - loss: 1.8712 - acc: 0.3510
+206/222 [==========================>...] - ETA: 19s - loss: 1.8663 - acc: 0.3513
+207/222 [==========================>...] - ETA: 18s - loss: 1.8631 - acc: 0.3517
+208/222 [===========================>..] - ETA: 17s - loss: 1.8600 - acc: 0.3521
+209/222 [===========================>..] - ETA: 15s - loss: 1.8572 - acc: 0.3524
+210/222 [===========================>..] - ETA: 14s - loss: 1.8546 - acc: 0.3528
+211/222 [===========================>..] - ETA: 13s - loss: 1.8505 - acc: 0.3531
+212/222 [===========================>..] - ETA: 12s - loss: 1.8475 - acc: 0.3533
+213/222 [===========================>..] - ETA: 10s - loss: 1.8443 - acc: 0.3538
+214/222 [===========================>..] - ETA: 9s - loss: 1.8407 - acc: 0.3540 
+215/222 [============================>.] - ETA: 8s - loss: 1.8370 - acc: 0.3541
+216/222 [============================>.] - ETA: 7s - loss: 1.8331 - acc: 0.3544
+217/222 [============================>.] - ETA: 6s - loss: 1.8291 - acc: 0.3546
+218/222 [============================>.] - ETA: 4s - loss: 1.8258 - acc: 0.3548
+219/222 [============================>.] - ETA: 3s - loss: 1.8227 - acc: 0.3549
+220/222 [============================>.] - ETA: 2s - loss: 1.8181 - acc: 0.3553
+221/222 [============================>.] - ETA: 1s - loss: 1.8152 - acc: 0.3558Epoch 00001: saving model to ./checkpoints/weights.01-2.98.hdf5
+
+222/222 [==============================] - 352s 2s/step - loss: 1.8114 - acc: 0.3559 - val_loss: 2.9814 - val_acc: 0.3267
+Epoch 2/100
+
+  1/222 [..............................] - ETA: 3:05 - loss: 0.9217 - acc: 0.4264
+  2/222 [..............................] - ETA: 3:01 - loss: 0.9440 - acc: 0.3961
+  3/222 [..............................] - ETA: 3:02 - loss: 1.0468 - acc: 0.4094
+  4/222 [..............................] - ETA: 3:02 - loss: 0.9748 - acc: 0.4147
+  5/222 [..............................] - ETA: 3:01 - loss: 0.9633 - acc: 0.4149
+  6/222 [..............................] - ETA: 3:01 - loss: 0.9549 - acc: 0.4091
+  7/222 [..............................] - ETA: 3:01 - loss: 0.9616 - acc: 0.4118
+  8/222 [>.............................] - ETA: 3:01 - loss: 0.9581 - acc: 0.4132
+  9/222 [>.............................] - ETA: 3:00 - loss: 0.9928 - acc: 0.4143
+ 10/222 [>.............................] - ETA: 2:58 - loss: 1.0070 - acc: 0.4145
+ 11/222 [>.............................] - ETA: 2:57 - loss: 1.0231 - acc: 0.4151
+ 12/222 [>.............................] - ETA: 2:55 - loss: 1.0160 - acc: 0.4159
+ 13/222 [>.............................] - ETA: 2:54 - loss: 1.0179 - acc: 0.4191
+ 14/222 [>.............................] - ETA: 2:53 - loss: 1.0010 - acc: 0.4203
+ 15/222 [=>............................] - ETA: 2:52 - loss: 0.9872 - acc: 0.4205
+ 16/222 [=>............................] - ETA: 2:52 - loss: 1.0025 - acc: 0.4194
+ 17/222 [=>............................] - ETA: 2:50 - loss: 0.9919 - acc: 0.4211
+ 18/222 [=>............................] - ETA: 2:49 - loss: 0.9791 - acc: 0.4222
+ 19/222 [=>............................] - ETA: 2:48 - loss: 0.9762 - acc: 0.4215
+ 20/222 [=>............................] - ETA: 2:47 - loss: 0.9901 - acc: 0.4201
+ 21/222 [=>............................] - ETA: 2:46 - loss: 1.0063 - acc: 0.4209
+ 22/222 [=>............................] - ETA: 2:45 - loss: 1.0019 - acc: 0.4189
+ 23/222 [==>...........................] - ETA: 2:44 - loss: 0.9909 - acc: 0.4196
+ 24/222 [==>...........................] - ETA: 2:44 - loss: 0.9943 - acc: 0.4192
+ 25/222 [==>...........................] - ETA: 2:42 - loss: 0.9953 - acc: 0.4197
+ 26/222 [==>...........................] - ETA: 2:46 - loss: 1.0013 - acc: 0.4188
+ 27/222 [==>...........................] - ETA: 2:49 - loss: 1.0052 - acc: 0.4198
+ 28/222 [==>...........................] - ETA: 2:49 - loss: 1.0009 - acc: 0.4184
+ 29/222 [==>...........................] - ETA: 2:51 - loss: 0.9989 - acc: 0.4197
+ 30/222 [===>..........................] - ETA: 2:52 - loss: 0.9985 - acc: 0.4213
+ 31/222 [===>..........................] - ETA: 2:53 - loss: 0.9957 - acc: 0.4221
+ 32/222 [===>..........................] - ETA: 2:52 - loss: 0.9865 - acc: 0.4233
+ 33/222 [===>..........................] - ETA: 2:53 - loss: 0.9838 - acc: 0.4248
+ 34/222 [===>..........................] - ETA: 2:54 - loss: 0.9846 - acc: 0.4270
+ 35/222 [===>..........................] - ETA: 2:55 - loss: 0.9900 - acc: 0.4276
+ 36/222 [===>..........................] - ETA: 2:54 - loss: 0.9873 - acc: 0.4293
+ 37/222 [====>.........................] - ETA: 2:54 - loss: 0.9857 - acc: 0.4307
+ 38/222 [====>.........................] - ETA: 2:55 - loss: 0.9822 - acc: 0.4317
+ 39/222 [====>.........................] - ETA: 2:59 - loss: 0.9751 - acc: 0.4315
+ 40/222 [====>.........................] - ETA: 2:59 - loss: 0.9784 - acc: 0.4329
+ 41/222 [====>.........................] - ETA: 2:59 - loss: 0.9743 - acc: 0.4333
+ 42/222 [====>.........................] - ETA: 2:58 - loss: 0.9722 - acc: 0.4331
+ 43/222 [====>.........................] - ETA: 2:58 - loss: 0.9681 - acc: 0.4336
+ 44/222 [====>.........................] - ETA: 2:58 - loss: 0.9720 - acc: 0.4335
+ 45/222 [=====>........................] - ETA: 2:58 - loss: 0.9660 - acc: 0.4345
+ 46/222 [=====>........................] - ETA: 2:57 - loss: 0.9649 - acc: 0.4353
+ 47/222 [=====>........................] - ETA: 2:57 - loss: 0.9630 - acc: 0.4356
+ 48/222 [=====>........................] - ETA: 2:57 - loss: 0.9626 - acc: 0.4361
+ 49/222 [=====>........................] - ETA: 2:56 - loss: 0.9633 - acc: 0.4373
+ 50/222 [=====>........................] - ETA: 2:56 - loss: 0.9584 - acc: 0.4382
+ 51/222 [=====>........................] - ETA: 2:55 - loss: 0.9552 - acc: 0.4390
+ 52/222 [======>.......................] - ETA: 2:57 - loss: 0.9550 - acc: 0.4403
+ 53/222 [======>.......................] - ETA: 2:57 - loss: 0.9524 - acc: 0.4409
+ 54/222 [======>.......................] - ETA: 2:56 - loss: 0.9536 - acc: 0.4418
+ 55/222 [======>.......................] - ETA: 2:56 - loss: 0.9514 - acc: 0.4431
+ 56/222 [======>.......................] - ETA: 2:55 - loss: 0.9534 - acc: 0.4442
+ 57/222 [======>.......................] - ETA: 2:54 - loss: 0.9543 - acc: 0.4451
+ 58/222 [======>.......................] - ETA: 2:53 - loss: 0.9505 - acc: 0.4457
+ 59/222 [======>.......................] - ETA: 2:52 - loss: 0.9519 - acc: 0.4457
+ 60/222 [=======>......................] - ETA: 2:52 - loss: 0.9573 - acc: 0.4454
+ 61/222 [=======>......................] - ETA: 2:52 - loss: 0.9607 - acc: 0.4459
+ 62/222 [=======>......................] - ETA: 2:51 - loss: 0.9589 - acc: 0.4457
+ 63/222 [=======>......................] - ETA: 2:50 - loss: 0.9588 - acc: 0.4462
+ 64/222 [=======>......................] - ETA: 2:49 - loss: 0.9538 - acc: 0.4468
+ 65/222 [=======>......................] - ETA: 2:50 - loss: 0.9512 - acc: 0.4472
+ 66/222 [=======>......................] - ETA: 2:50 - loss: 0.9477 - acc: 0.4478
+ 67/222 [========>.....................] - ETA: 2:48 - loss: 0.9456 - acc: 0.4477
+ 68/222 [========>.....................] - ETA: 2:47 - loss: 0.9438 - acc: 0.4480
+ 69/222 [========>.....................] - ETA: 2:46 - loss: 0.9451 - acc: 0.4479
+ 70/222 [========>.....................] - ETA: 2:46 - loss: 0.9438 - acc: 0.4482
+ 71/222 [========>.....................] - ETA: 2:44 - loss: 0.9441 - acc: 0.4486
+ 72/222 [========>.....................] - ETA: 2:43 - loss: 0.9415 - acc: 0.4491
+ 73/222 [========>.....................] - ETA: 2:43 - loss: 0.9422 - acc: 0.4503
+ 74/222 [=========>....................] - ETA: 2:42 - loss: 0.9396 - acc: 0.4508
+ 75/222 [=========>....................] - ETA: 2:41 - loss: 0.9405 - acc: 0.4513
+ 76/222 [=========>....................] - ETA: 2:40 - loss: 0.9416 - acc: 0.4517
+ 77/222 [=========>....................] - ETA: 2:39 - loss: 0.9398 - acc: 0.4524
+ 78/222 [=========>....................] - ETA: 2:39 - loss: 0.9378 - acc: 0.4526
+ 79/222 [=========>....................] - ETA: 2:39 - loss: 0.9396 - acc: 0.4535
+ 80/222 [=========>....................] - ETA: 2:38 - loss: 0.9420 - acc: 0.4540
+ 81/222 [=========>....................] - ETA: 2:37 - loss: 0.9406 - acc: 0.4547
+ 82/222 [==========>...................] - ETA: 2:36 - loss: 0.9405 - acc: 0.4552
+ 83/222 [==========>...................] - ETA: 2:35 - loss: 0.9406 - acc: 0.4562
+ 84/222 [==========>...................] - ETA: 2:34 - loss: 0.9410 - acc: 0.4565
+ 85/222 [==========>...................] - ETA: 2:33 - loss: 0.9386 - acc: 0.4574
+ 86/222 [==========>...................] - ETA: 2:32 - loss: 0.9424 - acc: 0.4579
+ 87/222 [==========>...................] - ETA: 2:30 - loss: 0.9389 - acc: 0.4585
+ 88/222 [==========>...................] - ETA: 2:29 - loss: 0.9383 - acc: 0.4589
+ 89/222 [===========>..................] - ETA: 2:28 - loss: 0.9371 - acc: 0.4593
+ 90/222 [===========>..................] - ETA: 2:27 - loss: 0.9387 - acc: 0.4599
+ 91/222 [===========>..................] - ETA: 2:27 - loss: 0.9357 - acc: 0.4599
+ 92/222 [===========>..................] - ETA: 2:26 - loss: 0.9339 - acc: 0.4606
+ 93/222 [===========>..................] - ETA: 2:25 - loss: 0.9342 - acc: 0.4611
+ 94/222 [===========>..................] - ETA: 2:24 - loss: 0.9351 - acc: 0.4616
+ 95/222 [===========>..................] - ETA: 2:23 - loss: 0.9331 - acc: 0.4619
+ 96/222 [===========>..................] - ETA: 2:22 - loss: 0.9331 - acc: 0.4621
+ 97/222 [============>.................] - ETA: 2:21 - loss: 0.9326 - acc: 0.4621
+ 98/222 [============>.................] - ETA: 2:20 - loss: 0.9325 - acc: 0.4622
+ 99/222 [============>.................] - ETA: 2:18 - loss: 0.9291 - acc: 0.4625
+100/222 [============>.................] - ETA: 2:17 - loss: 0.9274 - acc: 0.4630
+101/222 [============>.................] - ETA: 2:16 - loss: 0.9259 - acc: 0.4630
+102/222 [============>.................] - ETA: 2:15 - loss: 0.9270 - acc: 0.4635
+103/222 [============>.................] - ETA: 2:14 - loss: 0.9252 - acc: 0.4637
+104/222 [=============>................] - ETA: 2:14 - loss: 0.9237 - acc: 0.4643
+105/222 [=============>................] - ETA: 2:13 - loss: 0.9219 - acc: 0.4635
+106/222 [=============>................] - ETA: 2:12 - loss: 0.9198 - acc: 0.4637
+107/222 [=============>................] - ETA: 2:11 - loss: 0.9178 - acc: 0.4641
+108/222 [=============>................] - ETA: 2:09 - loss: 0.9166 - acc: 0.4638
+109/222 [=============>................] - ETA: 2:08 - loss: 0.9167 - acc: 0.4642
+110/222 [=============>................] - ETA: 2:07 - loss: 0.9162 - acc: 0.4645
+111/222 [==============>...............] - ETA: 2:06 - loss: 0.9160 - acc: 0.4646
+112/222 [==============>...............] - ETA: 2:05 - loss: 0.9152 - acc: 0.4647
+113/222 [==============>...............] - ETA: 2:04 - loss: 0.9129 - acc: 0.4649
+114/222 [==============>...............] - ETA: 2:03 - loss: 0.9116 - acc: 0.4652
+115/222 [==============>...............] - ETA: 2:02 - loss: 0.9114 - acc: 0.4654
+116/222 [==============>...............] - ETA: 2:00 - loss: 0.9114 - acc: 0.4658
+117/222 [==============>...............] - ETA: 2:00 - loss: 0.9095 - acc: 0.4659
+118/222 [==============>...............] - ETA: 1:59 - loss: 0.9093 - acc: 0.4660
+119/222 [===============>..............] - ETA: 1:58 - loss: 0.9079 - acc: 0.4658
+120/222 [===============>..............] - ETA: 1:57 - loss: 0.9079 - acc: 0.4659
+121/222 [===============>..............] - ETA: 1:56 - loss: 0.9081 - acc: 0.4659
+122/222 [===============>..............] - ETA: 1:55 - loss: 0.9055 - acc: 0.4659
+123/222 [===============>..............] - ETA: 1:53 - loss: 0.9030 - acc: 0.4657
+124/222 [===============>..............] - ETA: 1:52 - loss: 0.9015 - acc: 0.4655
+125/222 [===============>..............] - ETA: 1:51 - loss: 0.9018 - acc: 0.4652
+126/222 [================>.............] - ETA: 1:50 - loss: 0.9029 - acc: 0.4650
+127/222 [================>.............] - ETA: 1:49 - loss: 0.9013 - acc: 0.4648
+128/222 [================>.............] - ETA: 1:48 - loss: 0.9008 - acc: 0.4643
+129/222 [================>.............] - ETA: 1:47 - loss: 0.9004 - acc: 0.4640
+130/222 [================>.............] - ETA: 1:46 - loss: 0.8995 - acc: 0.4637
+131/222 [================>.............] - ETA: 1:45 - loss: 0.8984 - acc: 0.4633
+132/222 [================>.............] - ETA: 1:44 - loss: 0.8972 - acc: 0.4630
+133/222 [================>.............] - ETA: 1:43 - loss: 0.8965 - acc: 0.4628
+134/222 [=================>............] - ETA: 1:41 - loss: 0.8947 - acc: 0.4627
+135/222 [=================>............] - ETA: 1:40 - loss: 0.8954 - acc: 0.4626
+136/222 [=================>............] - ETA: 1:39 - loss: 0.8955 - acc: 0.4624
+137/222 [=================>............] - ETA: 1:38 - loss: 0.8951 - acc: 0.4624
+138/222 [=================>............] - ETA: 1:37 - loss: 0.8961 - acc: 0.4623
+139/222 [=================>............] - ETA: 1:36 - loss: 0.8954 - acc: 0.4621
+140/222 [=================>............] - ETA: 1:35 - loss: 0.8954 - acc: 0.4619
+141/222 [==================>...........] - ETA: 1:33 - loss: 0.8937 - acc: 0.4619
+142/222 [==================>...........] - ETA: 1:32 - loss: 0.8925 - acc: 0.4618
+143/222 [==================>...........] - ETA: 1:31 - loss: 0.8918 - acc: 0.4616
+144/222 [==================>...........] - ETA: 1:30 - loss: 0.8911 - acc: 0.4616
+145/222 [==================>...........] - ETA: 1:29 - loss: 0.8913 - acc: 0.4616
+146/222 [==================>...........] - ETA: 1:28 - loss: 0.8893 - acc: 0.4617
+147/222 [==================>...........] - ETA: 1:27 - loss: 0.8889 - acc: 0.4617
+148/222 [===================>..........] - ETA: 1:26 - loss: 0.8885 - acc: 0.4616
+149/222 [===================>..........] - ETA: 1:24 - loss: 0.8877 - acc: 0.4619
+150/222 [===================>..........] - ETA: 1:23 - loss: 0.8875 - acc: 0.4621
+151/222 [===================>..........] - ETA: 1:22 - loss: 0.8864 - acc: 0.4621
+152/222 [===================>..........] - ETA: 1:21 - loss: 0.8856 - acc: 0.4620
+153/222 [===================>..........] - ETA: 1:20 - loss: 0.8850 - acc: 0.4618
+154/222 [===================>..........] - ETA: 1:19 - loss: 0.8839 - acc: 0.4619
+155/222 [===================>..........] - ETA: 1:17 - loss: 0.8825 - acc: 0.4621
+156/222 [====================>.........] - ETA: 1:17 - loss: 0.8822 - acc: 0.4622
+157/222 [====================>.........] - ETA: 1:15 - loss: 0.8808 - acc: 0.4620
+158/222 [====================>.........] - ETA: 1:14 - loss: 0.8818 - acc: 0.4618
+159/222 [====================>.........] - ETA: 1:13 - loss: 0.8800 - acc: 0.4617
+160/222 [====================>.........] - ETA: 1:12 - loss: 0.8790 - acc: 0.4618
+161/222 [====================>.........] - ETA: 1:11 - loss: 0.8785 - acc: 0.4616
+162/222 [====================>.........] - ETA: 1:10 - loss: 0.8776 - acc: 0.4617
+163/222 [=====================>........] - ETA: 1:08 - loss: 0.8777 - acc: 0.4617
+164/222 [=====================>........] - ETA: 1:07 - loss: 0.8773 - acc: 0.4618
+165/222 [=====================>........] - ETA: 1:06 - loss: 0.8769 - acc: 0.4619
+166/222 [=====================>........] - ETA: 1:05 - loss: 0.8754 - acc: 0.4622
+167/222 [=====================>........] - ETA: 1:04 - loss: 0.8749 - acc: 0.4622
+168/222 [=====================>........] - ETA: 1:03 - loss: 0.8748 - acc: 0.4621
+169/222 [=====================>........] - ETA: 1:02 - loss: 0.8743 - acc: 0.4622
+170/222 [=====================>........] - ETA: 1:01 - loss: 0.8741 - acc: 0.4621
+171/222 [======================>.......] - ETA: 59s - loss: 0.8730 - acc: 0.4622 
+172/222 [======================>.......] - ETA: 58s - loss: 0.8711 - acc: 0.4622
+173/222 [======================>.......] - ETA: 57s - loss: 0.8713 - acc: 0.4625
+174/222 [======================>.......] - ETA: 56s - loss: 0.8704 - acc: 0.4627
+175/222 [======================>.......] - ETA: 55s - loss: 0.8706 - acc: 0.4627
+176/222 [======================>.......] - ETA: 53s - loss: 0.8705 - acc: 0.4628
+177/222 [======================>.......] - ETA: 52s - loss: 0.8696 - acc: 0.4628
+178/222 [=======================>......] - ETA: 51s - loss: 0.8683 - acc: 0.4630
+179/222 [=======================>......] - ETA: 50s - loss: 0.8675 - acc: 0.4631
+180/222 [=======================>......] - ETA: 49s - loss: 0.8666 - acc: 0.4633
+181/222 [=======================>......] - ETA: 48s - loss: 0.8659 - acc: 0.4633
+182/222 [=======================>......] - ETA: 47s - loss: 0.8655 - acc: 0.4632
+183/222 [=======================>......] - ETA: 45s - loss: 0.8658 - acc: 0.4636
+184/222 [=======================>......] - ETA: 44s - loss: 0.8654 - acc: 0.4636
+185/222 [========================>.....] - ETA: 43s - loss: 0.8643 - acc: 0.4638
+186/222 [========================>.....] - ETA: 42s - loss: 0.8632 - acc: 0.4641
+187/222 [========================>.....] - ETA: 41s - loss: 0.8627 - acc: 0.4645
+188/222 [========================>.....] - ETA: 40s - loss: 0.8622 - acc: 0.4649
+189/222 [========================>.....] - ETA: 38s - loss: 0.8616 - acc: 0.4652
+190/222 [========================>.....] - ETA: 37s - loss: 0.8602 - acc: 0.4653
+191/222 [========================>.....] - ETA: 36s - loss: 0.8596 - acc: 0.4656
+192/222 [========================>.....] - ETA: 35s - loss: 0.8610 - acc: 0.4659
+193/222 [=========================>....] - ETA: 34s - loss: 0.8605 - acc: 0.4662
+194/222 [=========================>....] - ETA: 32s - loss: 0.8595 - acc: 0.4665
+195/222 [=========================>....] - ETA: 31s - loss: 0.8600 - acc: 0.4665
+196/222 [=========================>....] - ETA: 30s - loss: 0.8592 - acc: 0.4667
+197/222 [=========================>....] - ETA: 29s - loss: 0.8592 - acc: 0.4667
+198/222 [=========================>....] - ETA: 28s - loss: 0.8591 - acc: 0.4668
+199/222 [=========================>....] - ETA: 27s - loss: 0.8577 - acc: 0.4669
+200/222 [==========================>...] - ETA: 25s - loss: 0.8575 - acc: 0.4671
+201/222 [==========================>...] - ETA: 24s - loss: 0.8572 - acc: 0.4673
+202/222 [==========================>...] - ETA: 23s - loss: 0.8588 - acc: 0.4677
+203/222 [==========================>...] - ETA: 22s - loss: 0.8583 - acc: 0.4678
+204/222 [==========================>...] - ETA: 21s - loss: 0.8582 - acc: 0.4680
+205/222 [==========================>...] - ETA: 20s - loss: 0.8577 - acc: 0.4681
+206/222 [==========================>...] - ETA: 18s - loss: 0.8565 - acc: 0.4682
+207/222 [==========================>...] - ETA: 17s - loss: 0.8560 - acc: 0.4682
+208/222 [===========================>..] - ETA: 16s - loss: 0.8558 - acc: 0.4682
+209/222 [===========================>..] - ETA: 15s - loss: 0.8553 - acc: 0.4682
+210/222 [===========================>..] - ETA: 14s - loss: 0.8544 - acc: 0.4680
+211/222 [===========================>..] - ETA: 13s - loss: 0.8532 - acc: 0.4681
+212/222 [===========================>..] - ETA: 11s - loss: 0.8530 - acc: 0.4680
+213/222 [===========================>..] - ETA: 10s - loss: 0.8517 - acc: 0.4679
+214/222 [===========================>..] - ETA: 9s - loss: 0.8529 - acc: 0.4680 
+215/222 [============================>.] - ETA: 8s - loss: 0.8531 - acc: 0.4679
+216/222 [============================>.] - ETA: 7s - loss: 0.8529 - acc: 0.4679
+217/222 [============================>.] - ETA: 5s - loss: 0.8514 - acc: 0.4678
+218/222 [============================>.] - ETA: 4s - loss: 0.8508 - acc: 0.4679
+219/222 [============================>.] - ETA: 3s - loss: 0.8519 - acc: 0.4680
+220/222 [============================>.] - ETA: 2s - loss: 0.8512 - acc: 0.4682
+221/222 [============================>.] - ETA: 1s - loss: 0.8505 - acc: 0.4683Epoch 00002: saving model to ./checkpoints/weights.02-3.06.hdf5
+
+222/222 [==============================] - 343s 2s/step - loss: 0.8493 - acc: 0.4683 - val_loss: 3.0557 - val_acc: 0.4029
+Epoch 3/100
+
+  1/222 [..............................] - ETA: 2:57 - loss: 0.6147 - acc: 0.4783
+  2/222 [..............................] - ETA: 3:03 - loss: 0.5866 - acc: 0.4871
+  3/222 [..............................] - ETA: 3:00 - loss: 0.6279 - acc: 0.4874
+  4/222 [..............................] - ETA: 3:01 - loss: 0.6928 - acc: 0.4706
+  5/222 [..............................] - ETA: 3:01 - loss: 0.7201 - acc: 0.4722
+  6/222 [..............................] - ETA: 3:01 - loss: 0.7307 - acc: 0.4752
+  7/222 [..............................] - ETA: 3:01 - loss: 0.7469 - acc: 0.4753
+  8/222 [>.............................] - ETA: 3:00 - loss: 0.7545 - acc: 0.4752
+  9/222 [>.............................] - ETA: 3:00 - loss: 0.7452 - acc: 0.4739
+ 10/222 [>.............................] - ETA: 2:59 - loss: 0.7495 - acc: 0.4747
+ 11/222 [>.............................] - ETA: 2:57 - loss: 0.7376 - acc: 0.4743
+ 12/222 [>.............................] - ETA: 2:56 - loss: 0.7529 - acc: 0.4752
+ 13/222 [>.............................] - ETA: 2:54 - loss: 0.7420 - acc: 0.4751
+ 14/222 [>.............................] - ETA: 2:53 - loss: 0.7534 - acc: 0.4772
+ 15/222 [=>............................] - ETA: 2:51 - loss: 0.7454 - acc: 0.4772
+ 16/222 [=>............................] - ETA: 2:50 - loss: 0.7380 - acc: 0.4776
+ 17/222 [=>............................] - ETA: 2:49 - loss: 0.7303 - acc: 0.4766
+ 18/222 [=>............................] - ETA: 2:48 - loss: 0.7294 - acc: 0.4770
+ 19/222 [=>............................] - ETA: 2:47 - loss: 0.7269 - acc: 0.4778
+ 20/222 [=>............................] - ETA: 2:47 - loss: 0.7275 - acc: 0.4794
+ 21/222 [=>............................] - ETA: 2:46 - loss: 0.7194 - acc: 0.4797
+ 22/222 [=>............................] - ETA: 2:44 - loss: 0.7218 - acc: 0.4795
+ 23/222 [==>...........................] - ETA: 2:43 - loss: 0.7239 - acc: 0.4796
+ 24/222 [==>...........................] - ETA: 2:42 - loss: 0.7246 - acc: 0.4814
+ 25/222 [==>...........................] - ETA: 2:44 - loss: 0.7209 - acc: 0.4821
+ 26/222 [==>...........................] - ETA: 2:45 - loss: 0.7164 - acc: 0.4834
+ 27/222 [==>...........................] - ETA: 2:50 - loss: 0.7134 - acc: 0.4836
+ 28/222 [==>...........................] - ETA: 2:52 - loss: 0.7151 - acc: 0.4838
+ 29/222 [==>...........................] - ETA: 2:53 - loss: 0.7110 - acc: 0.4835
+ 30/222 [===>..........................] - ETA: 2:54 - loss: 0.7164 - acc: 0.4832
+ 31/222 [===>..........................] - ETA: 2:55 - loss: 0.7122 - acc: 0.4826
+ 32/222 [===>..........................] - ETA: 2:56 - loss: 0.7138 - acc: 0.4836
+ 33/222 [===>..........................] - ETA: 2:57 - loss: 0.7163 - acc: 0.4836
+ 34/222 [===>..........................] - ETA: 2:56 - loss: 0.7099 - acc: 0.4842
+ 35/222 [===>..........................] - ETA: 2:56 - loss: 0.7068 - acc: 0.4848
+ 36/222 [===>..........................] - ETA: 2:57 - loss: 0.7039 - acc: 0.4857
+ 37/222 [====>.........................] - ETA: 2:57 - loss: 0.7038 - acc: 0.4868
+ 38/222 [====>.........................] - ETA: 3:01 - loss: 0.7064 - acc: 0.4868
+ 39/222 [====>.........................] - ETA: 3:02 - loss: 0.7073 - acc: 0.4872
+ 40/222 [====>.........................] - ETA: 3:01 - loss: 0.7046 - acc: 0.4881
+ 41/222 [====>.........................] - ETA: 3:01 - loss: 0.7031 - acc: 0.4882
+ 42/222 [====>.........................] - ETA: 3:01 - loss: 0.7012 - acc: 0.4892
+ 43/222 [====>.........................] - ETA: 3:00 - loss: 0.6981 - acc: 0.4900
+ 44/222 [====>.........................] - ETA: 2:59 - loss: 0.6969 - acc: 0.4905
+ 45/222 [=====>........................] - ETA: 2:58 - loss: 0.6985 - acc: 0.4912
+ 46/222 [=====>........................] - ETA: 2:59 - loss: 0.6971 - acc: 0.4925
+ 47/222 [=====>........................] - ETA: 2:59 - loss: 0.6967 - acc: 0.4932
+ 48/222 [=====>........................] - ETA: 2:58 - loss: 0.6976 - acc: 0.4935
+ 49/222 [=====>........................] - ETA: 2:57 - loss: 0.6971 - acc: 0.4939
+ 50/222 [=====>........................] - ETA: 2:57 - loss: 0.6990 - acc: 0.4948
+ 51/222 [=====>........................] - ETA: 2:59 - loss: 0.6959 - acc: 0.4952
+ 52/222 [======>.......................] - ETA: 2:58 - loss: 0.6945 - acc: 0.4953
+ 53/222 [======>.......................] - ETA: 2:57 - loss: 0.6939 - acc: 0.4957
+ 54/222 [======>.......................] - ETA: 2:57 - loss: 0.6922 - acc: 0.4964
+ 55/222 [======>.......................] - ETA: 2:57 - loss: 0.6946 - acc: 0.4971
+ 56/222 [======>.......................] - ETA: 2:56 - loss: 0.6929 - acc: 0.4982
+ 57/222 [======>.......................] - ETA: 2:55 - loss: 0.6917 - acc: 0.4994
+ 58/222 [======>.......................] - ETA: 2:54 - loss: 0.6871 - acc: 0.5000
+ 59/222 [======>.......................] - ETA: 2:53 - loss: 0.6858 - acc: 0.5014
+ 60/222 [=======>......................] - ETA: 2:52 - loss: 0.6877 - acc: 0.5025
+ 61/222 [=======>......................] - ETA: 2:51 - loss: 0.6869 - acc: 0.5025
+ 62/222 [=======>......................] - ETA: 2:50 - loss: 0.6894 - acc: 0.5032
+ 63/222 [=======>......................] - ETA: 2:50 - loss: 0.6879 - acc: 0.5031
+ 64/222 [=======>......................] - ETA: 2:51 - loss: 0.6867 - acc: 0.5038
+ 65/222 [=======>......................] - ETA: 2:51 - loss: 0.6839 - acc: 0.5050
+ 66/222 [=======>......................] - ETA: 2:50 - loss: 0.6823 - acc: 0.5059
+ 67/222 [========>.....................] - ETA: 2:49 - loss: 0.6808 - acc: 0.5065
+ 68/222 [========>.....................] - ETA: 2:48 - loss: 0.6799 - acc: 0.5069
+ 69/222 [========>.....................] - ETA: 2:47 - loss: 0.6770 - acc: 0.5073
+ 70/222 [========>.....................] - ETA: 2:46 - loss: 0.6770 - acc: 0.5071
+ 71/222 [========>.....................] - ETA: 2:44 - loss: 0.6763 - acc: 0.5076
+ 72/222 [========>.....................] - ETA: 2:44 - loss: 0.6767 - acc: 0.5082
+ 73/222 [========>.....................] - ETA: 2:42 - loss: 0.6759 - acc: 0.5084
+ 74/222 [=========>....................] - ETA: 2:41 - loss: 0.6763 - acc: 0.5087
+ 75/222 [=========>....................] - ETA: 2:40 - loss: 0.6787 - acc: 0.5091
+ 76/222 [=========>....................] - ETA: 2:39 - loss: 0.6775 - acc: 0.5092
+ 77/222 [=========>....................] - ETA: 2:40 - loss: 0.6768 - acc: 0.5098
+ 78/222 [=========>....................] - ETA: 2:39 - loss: 0.6756 - acc: 0.5102
+ 79/222 [=========>....................] - ETA: 2:38 - loss: 0.6737 - acc: 0.5105
+ 80/222 [=========>....................] - ETA: 2:37 - loss: 0.6730 - acc: 0.5107
+ 81/222 [=========>....................] - ETA: 2:36 - loss: 0.6731 - acc: 0.5110
+ 82/222 [==========>...................] - ETA: 2:35 - loss: 0.6718 - acc: 0.5112
+ 83/222 [==========>...................] - ETA: 2:34 - loss: 0.6721 - acc: 0.5115
+ 84/222 [==========>...................] - ETA: 2:33 - loss: 0.6713 - acc: 0.5120
+ 85/222 [==========>...................] - ETA: 2:31 - loss: 0.6700 - acc: 0.5118
+ 86/222 [==========>...................] - ETA: 2:31 - loss: 0.6693 - acc: 0.5121
+ 87/222 [==========>...................] - ETA: 2:30 - loss: 0.6684 - acc: 0.5125
+ 88/222 [==========>...................] - ETA: 2:28 - loss: 0.6676 - acc: 0.5127
+ 89/222 [===========>..................] - ETA: 2:27 - loss: 0.6678 - acc: 0.5126
+ 90/222 [===========>..................] - ETA: 2:28 - loss: 0.6685 - acc: 0.5129
+ 91/222 [===========>..................] - ETA: 2:26 - loss: 0.6668 - acc: 0.5132
+ 92/222 [===========>..................] - ETA: 2:26 - loss: 0.6660 - acc: 0.5139
+ 93/222 [===========>..................] - ETA: 2:25 - loss: 0.6649 - acc: 0.5143
+ 94/222 [===========>..................] - ETA: 2:23 - loss: 0.6633 - acc: 0.5149
+ 95/222 [===========>..................] - ETA: 2:22 - loss: 0.6625 - acc: 0.5152
+ 96/222 [===========>..................] - ETA: 2:21 - loss: 0.6630 - acc: 0.5155
+ 97/222 [============>.................] - ETA: 2:20 - loss: 0.6632 - acc: 0.5156
+ 98/222 [============>.................] - ETA: 2:19 - loss: 0.6616 - acc: 0.5160
+ 99/222 [============>.................] - ETA: 2:18 - loss: 0.6620 - acc: 0.5160
+100/222 [============>.................] - ETA: 2:17 - loss: 0.6651 - acc: 0.5165
+101/222 [============>.................] - ETA: 2:15 - loss: 0.6641 - acc: 0.5166
+102/222 [============>.................] - ETA: 2:14 - loss: 0.6644 - acc: 0.5172
+103/222 [============>.................] - ETA: 2:14 - loss: 0.6621 - acc: 0.5178
+104/222 [=============>................] - ETA: 2:13 - loss: 0.6620 - acc: 0.5182
+105/222 [=============>................] - ETA: 2:12 - loss: 0.6616 - acc: 0.5184
+106/222 [=============>................] - ETA: 2:11 - loss: 0.6614 - acc: 0.5187
+107/222 [=============>................] - ETA: 2:10 - loss: 0.6618 - acc: 0.5192
+108/222 [=============>................] - ETA: 2:09 - loss: 0.6615 - acc: 0.5197
+109/222 [=============>................] - ETA: 2:07 - loss: 0.6603 - acc: 0.5202
+110/222 [=============>................] - ETA: 2:07 - loss: 0.6586 - acc: 0.5205
+111/222 [==============>...............] - ETA: 2:05 - loss: 0.6587 - acc: 0.5208
+112/222 [==============>...............] - ETA: 2:04 - loss: 0.6583 - acc: 0.5210
+113/222 [==============>...............] - ETA: 2:03 - loss: 0.6568 - acc: 0.5214
+114/222 [==============>...............] - ETA: 2:02 - loss: 0.6571 - acc: 0.5216
+115/222 [==============>...............] - ETA: 2:01 - loss: 0.6574 - acc: 0.5215
+116/222 [==============>...............] - ETA: 2:00 - loss: 0.6571 - acc: 0.5215
+117/222 [==============>...............] - ETA: 1:59 - loss: 0.6581 - acc: 0.5217
+118/222 [==============>...............] - ETA: 1:58 - loss: 0.6591 - acc: 0.5220
+119/222 [===============>..............] - ETA: 1:57 - loss: 0.6603 - acc: 0.5224
+120/222 [===============>..............] - ETA: 1:56 - loss: 0.6605 - acc: 0.5227
+121/222 [===============>..............] - ETA: 1:55 - loss: 0.6604 - acc: 0.5231
+122/222 [===============>..............] - ETA: 1:54 - loss: 0.6614 - acc: 0.5235
+123/222 [===============>..............] - ETA: 1:53 - loss: 0.6613 - acc: 0.5237
+124/222 [===============>..............] - ETA: 1:51 - loss: 0.6596 - acc: 0.5240
+125/222 [===============>..............] - ETA: 1:50 - loss: 0.6595 - acc: 0.5242
+126/222 [================>.............] - ETA: 1:49 - loss: 0.6591 - acc: 0.5245
+127/222 [================>.............] - ETA: 1:48 - loss: 0.6571 - acc: 0.5247
+128/222 [================>.............] - ETA: 1:47 - loss: 0.6565 - acc: 0.5248
+129/222 [================>.............] - ETA: 1:46 - loss: 0.6565 - acc: 0.5249
+130/222 [================>.............] - ETA: 1:45 - loss: 0.6560 - acc: 0.5251
+131/222 [================>.............] - ETA: 1:44 - loss: 0.6552 - acc: 0.5252
+132/222 [================>.............] - ETA: 1:43 - loss: 0.6567 - acc: 0.5251
+133/222 [================>.............] - ETA: 1:42 - loss: 0.6547 - acc: 0.5253
+134/222 [=================>............] - ETA: 1:40 - loss: 0.6547 - acc: 0.5254
+135/222 [=================>............] - ETA: 1:39 - loss: 0.6550 - acc: 0.5255
+136/222 [=================>............] - ETA: 1:38 - loss: 0.6541 - acc: 0.5256
+137/222 [=================>............] - ETA: 1:37 - loss: 0.6532 - acc: 0.5259
+138/222 [=================>............] - ETA: 1:36 - loss: 0.6534 - acc: 0.5262
+139/222 [=================>............] - ETA: 1:35 - loss: 0.6535 - acc: 0.5265
+140/222 [=================>............] - ETA: 1:33 - loss: 0.6528 - acc: 0.5268
+141/222 [==================>...........] - ETA: 1:32 - loss: 0.6534 - acc: 0.5271
+142/222 [==================>...........] - ETA: 1:32 - loss: 0.6531 - acc: 0.5276
+143/222 [==================>...........] - ETA: 1:31 - loss: 0.6519 - acc: 0.5279
+144/222 [==================>...........] - ETA: 1:29 - loss: 0.6511 - acc: 0.5282
+145/222 [==================>...........] - ETA: 1:28 - loss: 0.6507 - acc: 0.5285
+146/222 [==================>...........] - ETA: 1:27 - loss: 0.6504 - acc: 0.5290
+147/222 [==================>...........] - ETA: 1:26 - loss: 0.6504 - acc: 0.5293
+148/222 [===================>..........] - ETA: 1:25 - loss: 0.6496 - acc: 0.5297
+149/222 [===================>..........] - ETA: 1:24 - loss: 0.6486 - acc: 0.5300
+150/222 [===================>..........] - ETA: 1:22 - loss: 0.6480 - acc: 0.5303
+151/222 [===================>..........] - ETA: 1:21 - loss: 0.6474 - acc: 0.5306
+152/222 [===================>..........] - ETA: 1:20 - loss: 0.6466 - acc: 0.5308
+153/222 [===================>..........] - ETA: 1:19 - loss: 0.6468 - acc: 0.5311
+154/222 [===================>..........] - ETA: 1:18 - loss: 0.6459 - acc: 0.5313
+155/222 [===================>..........] - ETA: 1:17 - loss: 0.6445 - acc: 0.5315
+156/222 [====================>.........] - ETA: 1:16 - loss: 0.6435 - acc: 0.5318
+157/222 [====================>.........] - ETA: 1:15 - loss: 0.6428 - acc: 0.5321
+158/222 [====================>.........] - ETA: 1:14 - loss: 0.6422 - acc: 0.5324
+159/222 [====================>.........] - ETA: 1:13 - loss: 0.6417 - acc: 0.5326
+160/222 [====================>.........] - ETA: 1:11 - loss: 0.6414 - acc: 0.5330
+161/222 [====================>.........] - ETA: 1:10 - loss: 0.6404 - acc: 0.5332
+162/222 [====================>.........] - ETA: 1:09 - loss: 0.6405 - acc: 0.5335
+163/222 [=====================>........] - ETA: 1:08 - loss: 0.6403 - acc: 0.5337
+164/222 [=====================>........] - ETA: 1:07 - loss: 0.6394 - acc: 0.5341
+165/222 [=====================>........] - ETA: 1:05 - loss: 0.6388 - acc: 0.5344
+166/222 [=====================>........] - ETA: 1:04 - loss: 0.6384 - acc: 0.5348
+167/222 [=====================>........] - ETA: 1:03 - loss: 0.6392 - acc: 0.5349
+168/222 [=====================>........] - ETA: 1:02 - loss: 0.6386 - acc: 0.5352
+169/222 [=====================>........] - ETA: 1:01 - loss: 0.6372 - acc: 0.5358
+170/222 [=====================>........] - ETA: 1:00 - loss: 0.6363 - acc: 0.5362
+171/222 [======================>.......] - ETA: 59s - loss: 0.6355 - acc: 0.5365 
+172/222 [======================>.......] - ETA: 58s - loss: 0.6348 - acc: 0.5370
+173/222 [======================>.......] - ETA: 56s - loss: 0.6337 - acc: 0.5374
+174/222 [======================>.......] - ETA: 55s - loss: 0.6338 - acc: 0.5377
+175/222 [======================>.......] - ETA: 54s - loss: 0.6342 - acc: 0.5380
+176/222 [======================>.......] - ETA: 53s - loss: 0.6341 - acc: 0.5384
+177/222 [======================>.......] - ETA: 52s - loss: 0.6341 - acc: 0.5388
+178/222 [=======================>......] - ETA: 51s - loss: 0.6344 - acc: 0.5392
+179/222 [=======================>......] - ETA: 49s - loss: 0.6343 - acc: 0.5393
+180/222 [=======================>......] - ETA: 48s - loss: 0.6335 - acc: 0.5396
+181/222 [=======================>......] - ETA: 47s - loss: 0.6331 - acc: 0.5399
+182/222 [=======================>......] - ETA: 46s - loss: 0.6331 - acc: 0.5401
+183/222 [=======================>......] - ETA: 45s - loss: 0.6322 - acc: 0.5402
+184/222 [=======================>......] - ETA: 44s - loss: 0.6316 - acc: 0.5403
+185/222 [========================>.....] - ETA: 43s - loss: 0.6336 - acc: 0.5402
+186/222 [========================>.....] - ETA: 41s - loss: 0.6336 - acc: 0.5402
+187/222 [========================>.....] - ETA: 40s - loss: 0.6330 - acc: 0.5404
+188/222 [========================>.....] - ETA: 39s - loss: 0.6323 - acc: 0.5406
+189/222 [========================>.....] - ETA: 38s - loss: 0.6318 - acc: 0.5407
+190/222 [========================>.....] - ETA: 37s - loss: 0.6307 - acc: 0.5409
+191/222 [========================>.....] - ETA: 36s - loss: 0.6304 - acc: 0.5412
+192/222 [========================>.....] - ETA: 34s - loss: 0.6307 - acc: 0.5414
+193/222 [=========================>....] - ETA: 33s - loss: 0.6310 - acc: 0.5416
+194/222 [=========================>....] - ETA: 32s - loss: 0.6301 - acc: 0.5419
+195/222 [=========================>....] - ETA: 31s - loss: 0.6300 - acc: 0.5422
+196/222 [=========================>....] - ETA: 30s - loss: 0.6300 - acc: 0.5425
+197/222 [=========================>....] - ETA: 29s - loss: 0.6295 - acc: 0.5427
+198/222 [=========================>....] - ETA: 28s - loss: 0.6292 - acc: 0.5430
+199/222 [=========================>....] - ETA: 26s - loss: 0.6288 - acc: 0.5432
+200/222 [==========================>...] - ETA: 25s - loss: 0.6281 - acc: 0.5435
+201/222 [==========================>...] - ETA: 24s - loss: 0.6279 - acc: 0.5438
+202/222 [==========================>...] - ETA: 23s - loss: 0.6279 - acc: 0.5440
+203/222 [==========================>...] - ETA: 22s - loss: 0.6279 - acc: 0.5443
+204/222 [==========================>...] - ETA: 21s - loss: 0.6279 - acc: 0.5445
+205/222 [==========================>...] - ETA: 19s - loss: 0.6271 - acc: 0.5447
+206/222 [==========================>...] - ETA: 18s - loss: 0.6270 - acc: 0.5450
+207/222 [==========================>...] - ETA: 17s - loss: 0.6263 - acc: 0.5452
+208/222 [===========================>..] - ETA: 16s - loss: 0.6260 - acc: 0.5455
+209/222 [===========================>..] - ETA: 15s - loss: 0.6254 - acc: 0.5458
+210/222 [===========================>..] - ETA: 14s - loss: 0.6250 - acc: 0.5460
+211/222 [===========================>..] - ETA: 12s - loss: 0.6241 - acc: 0.5461
+212/222 [===========================>..] - ETA: 11s - loss: 0.6246 - acc: 0.5464
+213/222 [===========================>..] - ETA: 10s - loss: 0.6242 - acc: 0.5467
+214/222 [===========================>..] - ETA: 9s - loss: 0.6247 - acc: 0.5469 
+215/222 [============================>.] - ETA: 8s - loss: 0.6241 - acc: 0.5471
+216/222 [============================>.] - ETA: 7s - loss: 0.6238 - acc: 0.5473
+217/222 [============================>.] - ETA: 5s - loss: 0.6239 - acc: 0.5474
+218/222 [============================>.] - ETA: 4s - loss: 0.6232 - acc: 0.5475
+219/222 [============================>.] - ETA: 3s - loss: 0.6228 - acc: 0.5477
+220/222 [============================>.] - ETA: 2s - loss: 0.6224 - acc: 0.5479
+221/222 [============================>.] - ETA: 1s - loss: 0.6223 - acc: 0.5480

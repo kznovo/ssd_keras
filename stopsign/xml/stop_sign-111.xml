@@ -1,0 +1,1 @@
+<annotation><filename>stop_sign-111.jpg</filename><size><width>1594</width><height>896</height><depth>3</depth></size><object><bndbox><xmin>371</xmin><ymin>431</ymin><xmax>609</xmax><ymax>639</ymax></bndbox><name>stop_sign</name></object></annotation>
