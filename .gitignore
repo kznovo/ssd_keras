@@ -11,9 +11,10 @@ __pycache__/
 #HDF5
 *.hdf5
 
-# video
+# video and images
 *.mp4
 *.avi
+*.jpg
 
 # Distribution / packaging
 .Python
