@@ -68,7 +68,7 @@ class VideoTest(object):
         time_as_name = now.strftime("%Y%m%d%H%M%S")
         
         # csv output
-        item_1, item_2, item_3 = ('car', 'bus', 'person')
+        item_1, item_2, item_3 = ('stop_signs', 'bus', 'person')
         df_tmp = pd.DataFrame(columns=('frame','object','coord'))
         csv_res = pd.DataFrame(columns=
                                ('count_'+item_1,

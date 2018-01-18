@@ -237,9 +237,9 @@ callbacks = [keras.callbacks.ModelCheckpoint('./checkpoints/weights.{epoch:02d}-
              keras.callbacks.TensorBoard(log_dir=log_filepath, histogram_freq=0, write_graph=True, write_grads=True, write_images=True)]
 
 base_lr = 3e-4
-optim = keras.optimizers.Adam(lr=base_lr)
-# optim = keras.optimizers.RMSprop(lr=base_lr)
-# optim = keras.optimizers.SGD(lr=base_lr, momentum=0.9, decay=decay, nesterov=True)
+# optim = keras.optimizers.Adam(lr=base_lr)
+optim = keras.optimizers.RMSprop(lr=base_lr)
+# optim = keras.optimizers.SGD(lr=base_lr, momentum=0.9, nesterov=True)
 model.compile(optimizer=optim,
               loss=MultiboxLoss(NUM_CLASSES, neg_pos_ratio=2.0).compute_loss, metrics=['acc'])
 
