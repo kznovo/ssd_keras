@@ -1,0 +1,1 @@
+<annotation><filename>stop_1323896859.avi_image21.jpg</filename><size><height>480</height><width>640</width><depth /></size><object><bndbox><xmin>48</xmin><ymin>198</ymin><xmax>70</xmax><ymax>220</ymax></bndbox><name>stop</name></object><object><bndbox><xmin>479</xmin><ymin>214</ymin><xmax>504</xmax><ymax>239</ymax></bndbox><name>stop</name></object></annotation>

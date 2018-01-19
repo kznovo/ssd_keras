@@ -34,7 +34,7 @@ now = datetime.datetime.now()
 log_filepath = 'logs/%s/' % now.strftime("%Y%m%d%H%M%S")
 os.mkdir(log_filepath)
 
-gt = pickle.load(open('stopsign/data.p', 'rb'))
+gt = pickle.load(open('lisa/data.p', 'rb'))
 keys = sorted(gt.keys())
 num_train = int(round(0.8 * len(keys)))
 train_keys = keys[:num_train]
@@ -209,8 +209,8 @@ class Generator(object):
                     targets = []
                     yield preprocess_input(tmp_inp), tmp_targets
                     
-path_prefix = 'stopsign/img/'
-gen = Generator(gt, bbox_util, 16, 'stopsign/img/',
+path_prefix = 'lisa/img/useimg/'
+gen = Generator(gt, bbox_util, 16, path_prefix,
                 train_keys, val_keys,
                 (input_shape[0], input_shape[1]), do_crop=False)
 
@@ -236,14 +236,14 @@ callbacks = [keras.callbacks.ModelCheckpoint('./checkpoints/weights.{epoch:02d}-
              keras.callbacks.LearningRateScheduler(schedule),
              keras.callbacks.TensorBoard(log_dir=log_filepath, histogram_freq=0, write_graph=True, write_grads=True, write_images=True)]
 
-base_lr = 3e-4
-# optim = keras.optimizers.Adam(lr=base_lr)
-optim = keras.optimizers.RMSprop(lr=base_lr)
+base_lr = 1e-4
+optim = keras.optimizers.Adam(lr=base_lr)
+# optim = keras.optimizers.RMSprop(lr=base_lr)
 # optim = keras.optimizers.SGD(lr=base_lr, momentum=0.9, nesterov=True)
 model.compile(optimizer=optim,
               loss=MultiboxLoss(NUM_CLASSES, neg_pos_ratio=2.0).compute_loss, metrics=['acc'])
 
-nb_epoch = 100
+nb_epoch = 1000
 history = model.fit_generator(gen.generate(True), gen.train_batches,
                               nb_epoch, verbose=1,
                               callbacks=callbacks,
